@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from "styled-components"; 
 
 export const Navigation = styled.div`
     margin: 0;
@@ -14,6 +13,8 @@ export const Navigation = styled.div`
     display: flex;
     flex-direction:column;
     scroll-behavior: unset;
+
+
 `;
 
 export const Logo = styled.div`
@@ -65,6 +66,9 @@ export const Itens = styled.div`
             padding-left: 10px;
         }
     }
+    :active{
+        background-color: #C7D2D4;
+    }
 `;
 
 
@@ -80,4 +84,19 @@ export const Hide = styled.div`
         background-color: transparent;
     }
 
+`;
+
+export const MenuIcon = styled.div`
+    display: none;
+    font-size: 24px;
+
+    .fa-times{
+        transform: rotate(360deg);
+        transition: all 0.2s ease-in-out;
+    }
+
+    .fa-bars {
+        transform: rotate(180deg);
+        transition: all 0.2s ease-in-out;
+    }
 `;

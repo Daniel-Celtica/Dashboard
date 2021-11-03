@@ -13,14 +13,13 @@ export const Navigation = styled.div`
     display: flex;
     flex-direction:column;
     scroll-behavior: unset;
-
-
+    transition: all 0.2s ease-in-out;
 `;
 
 export const Logo = styled.div`
-    height: 100px;
-    padding-top: 10px;
     padding-left: 4px;
+    padding-top: 10px;
+    padding-bottom: 36px;
 
     img{
         height: 50px;
@@ -29,7 +28,8 @@ export const Logo = styled.div`
 `;
 
 export const Hello = styled.div`
-    height: 50px;
+    padding-top: 13px;
+    padding-bottom: 13px;
     padding-left: 10px;
     i{
         font-size: 20px;
@@ -66,37 +66,31 @@ export const Itens = styled.div`
             padding-left: 10px;
         }
     }
-    :active{
-        background-color: #C7D2D4;
-    }
 `;
 
-
 export const Hide = styled.div`
-    position: absolute;
+    /* position: absolute;
     bottom: 0px;
     right: 0px;
     padding-bottom: 10px;
-    padding-right: 26px;
+    padding-right: 26px; */
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: ${({ open }) => open ? '260px' : '80px'};
+    /* width: 260px; */
+    align-self:flex-end;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-top: solid 1px #C7D2D4;
+    background-color: ${({ open }) => open ? '#d1d0e1' : '#a2d3f2'};
+    display: inline-block;
+    text-align:end;
+    cursor: pointer;
 
-    button{
-        border: 0px;
+    img{
+        padding: 0px 20px 0px 20px;
         background-color: transparent;
     }
 
-`;
-
-export const MenuIcon = styled.div`
-    display: none;
-    font-size: 24px;
-
-    .fa-times{
-        transform: rotate(360deg);
-        transition: all 0.2s ease-in-out;
-    }
-
-    .fa-bars {
-        transform: rotate(180deg);
-        transition: all 0.2s ease-in-out;
-    }
 `;

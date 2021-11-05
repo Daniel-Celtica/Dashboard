@@ -5,14 +5,20 @@ export default function Filtro (){
         <div className="filtro">
             <img src={filtro} />
             <span>Filtros</span>
-            <div className="ano">
-                <label>ano</label>
-            </div>
-            <div className="mes">
-                <label>mes</label>
-            </div>
-            <div className="natureza">
-                <label>natureza</label>
+            <br/>
+            <div className="campos">
+                <div className="ano">
+                    <label className="title">ano</label>
+                    <input className="input" type="text"></input>
+                </div>
+                <div className="mes">
+                    <label className="title">mes</label>
+                    <input className="input" type="text"></input>
+                </div>
+                <div className="natureza">
+                    <label className="title">natureza</label>
+                    <input className="input" type="text"></input>
+                </div>
             </div>
         </div>
     )

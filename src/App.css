@@ -191,16 +191,30 @@ body{
     
 }
 
+/*FILTRO POSSO CRIAR UM CSS SEPARADO DEPOIS*/
+
 .container .filtro{
-    display: flex;
-    flex-direction: row;
-    padding: 20px;
+    padding: 15px;
     font-size: 20px;
     background-color: #fff;
     border-radius: 20px;
-    height: 60px;
+    height: 80px;
 }
 
 .container .filtro img{
     width: 24px;
+}
+
+.container .filtro .campos{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.title{
+    padding: 5px;
+}
+
+.input{
+    padding: 5px;
 }

@@ -10,8 +10,14 @@ li{
     list-style: none;
 }
 body{
+    /* box-sizing: border-box; */
     background-color: #ddd;
     font-family: 'Roboto', sans-serif;
+}
+
+.app{
+    width: 100vw;
+    height: 100vh;
 }
 
 ::-webkit-scrollbar {
@@ -23,7 +29,7 @@ body{
 .side-menu{
     position: fixed;
     background: #fff;
-    width: 300px;
+    width: 225px;
     height: 100%;
     box-sizing: border-box;
     border-radius: 0px 20px 20px 0px;
@@ -31,31 +37,32 @@ body{
     box-shadow: 0px 2px 5px #B3B3B3;
 }
 
+
 .side-menu.inactive{
-    width: 100px;
+    width: 75px;
 }
 
 /*LOGO*/
 
 .side-menu .logo{
-    padding: 20px 20px;
-    overflow: hidden;
+    padding: 15px 15px;
+    
     display: inline-block;
 }
 
 /*HELLO*/
 
 .side-menu .hello i{
-    padding-left: 20px;
+    padding-left: 15px;
     border: 0;
     outline: none;
-    height: 35px;
+    height: 15px;
     display: block;
     margin: 20px 0;
     width: 100%;
     box-sizing: border-box;
     color: #375E65;
-    font-size: 18px;
+    font-size: 16px;
     white-space: nowrap;
 }
 
@@ -68,9 +75,7 @@ body{
 .side-menu .main-menu .menu-item{
     color: #375E65;
     text-decoration: none;
-    font-size: 15px;
     display: block;
-    font-weight: 500;
     cursor: pointer;
 }
 
@@ -88,13 +93,18 @@ body{
 }
 
 .side-menu .main-menu .menu-item .menu-icon{
-    padding-left: 30px;
+    padding-left: 18px;
     display: inline-block;
     width: 40px;
     height: 78px;
     font-size: 20px;
     line-height: 88px;
     text-align: center;
+}
+
+.side-menu .main-menu .menu-item .menu-icon svg{
+    width: 26px;
+    height: 26px;
 }
 
 .side-menu .main-menu .menu-item.active polygon{ 
@@ -118,7 +128,7 @@ body{
     position: absolute;
     display: inline-block;
     line-height: 80px;
-    font-size: 24px;
+    font-size: 18px;
     opacity: 1;
     transition: opacity .2s ease-in;
 }
@@ -128,17 +138,6 @@ body{
     width: 0;
     height: 0;
     overflow: hidden;
-}
-
-.side-menu .main-menu .sub-menu{
-    color: #375E65;
-    margin-left: 50px;
-    border-left: 1px solid #375E65;
-    box-sizing: border-box;
-    padding-left: 30px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .2s ease-in;
 }
 
 .side-menu .main-menu .menu-item:not(.active):hover {
@@ -152,7 +151,7 @@ body{
     position: absolute;
     bottom: 0px;
     right: 0px;
-    width: 300px;
+    width: 225px;
     align-self:flex-end;
     padding-bottom: 10px;
     padding-top: 10px;
@@ -170,7 +169,7 @@ body{
 }
 
 .side-menu.inactive .toggle-menu-btn img{
-    padding-right: 40px;
+    padding-right: 29px;
 }
 
 .side-menu .toggle-menu-btn img{
@@ -180,42 +179,161 @@ body{
 /*CONTAINER*/
 
 .container{
-    margin-left: 320px;
+    width: 100vw;
+    height: 100vh;
+    margin-left: 245px;
     transition: all .2s ease-in-out;
     box-sizing: border-box;
-    margin-right: 20px;
+    position: fixed;
+    display: inline-block;
 }
 
 .container.inactive{
-    margin-left: 120px;
-    
+    margin-left: 95px;
 }
 
 /*FILTRO POSSO CRIAR UM CSS SEPARADO DEPOIS*/
 
-.container .filtro{
+.container .filtro {
+    margin-right: 20px;
+    height: 90px;
     padding: 15px;
-    font-size: 20px;
-    background-color: #fff;
-    border-radius: 20px;
-    height: 80px;
+    font-size: 18px;
+    background-color: #375E65;
+    border-bottom-left-radius: 20px;
     box-shadow: 0px 2px 5px #B3B3B3;
+    color: #FFF;
 }
 
 .container .filtro img{
-    width: 24px;
+    width: 20px;
+    filter: brightness(0) invert(1) ;
 }
 
 .container .filtro .campos{
+    font-size: 16px;
     padding: 10px;
     display: flex;
     flex-direction: row;
 }
 
-.title{
+.campos div{
+    display: flex;
+    flex-direction: column;
     padding: 5px;
 }
 
-.input{
-    padding: 5px;
+/*CONTENT*/
+
+.content{
+    width: 1675px;
+    height: 809px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: fixed;
 }
+.container.inactive .content{
+    width: 1825px;
+}
+
+.content-top{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+.barc{
+    background-color: #FFF;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 2px 5px #B3B3B3;
+}
+
+.labelc {
+    background-color: #FFF;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0px 2px 5px #B3B3B3;
+}
+
+.valor{
+    font-size: 26px;
+}
+
+.medida{
+    font-size: 10px;
+}
+
+.twoinone{
+    width: 32.2%;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-bottom{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    padding-top: 20px;
+}
+
+.lc{
+    width: 70%;
+    margin-right: 20px;
+}
+
+.t{
+    margin-right: 20px;
+    width: 30%;
+}
+
+.linec{
+    background-color: #FFF;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 2px 5px #B3B3B3;
+}
+
+.tablec{
+    background-color: #FFF;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 2px 5px #B3B3B3;
+    height: 344.5px;
+}
+
+.tablec div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    
+    text-align: left;
+    border-collapse: collapse; 
+    background-color: #FFF;
+    font-size: 14px;
+    width: 400px;
+    border: 2px solid #375E65;
+  }
+
+  td, th {
+    border-bottom: 2px solid #375E65;
+    padding: 10px;
+  }
+
+  th {
+    background: #375E65;
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #FFF;
+    color: white;
+    padding: 10px;
+  }
+    

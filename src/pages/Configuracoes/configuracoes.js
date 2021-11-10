@@ -2,7 +2,8 @@
 
 export default function Configuracoes (){
     return(
-        <div>
+        <div className="content">
+
 
         </div>
     )

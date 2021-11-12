@@ -75,13 +75,13 @@ export default function BarC (){
       <Tooltip />
       <Legend dataKey="n" fontSize="10" wrapperStyle={{
         paddingTop: "10px"
-    }}/>
+        }}/>
       <Bar dataKey="n" fill="#375E65">
-        {/* DEIXA AS COLUNAS COLORIDAS
+        DEIXA AS COLUNAS COLORIDAS
          {data.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={barcolors[index %20]}/>
           ))
-        }       */}
+        }      
       </Bar>
     </BarChart>
     </ResponsiveContainer>

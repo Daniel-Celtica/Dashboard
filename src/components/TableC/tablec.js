@@ -2,9 +2,6 @@ export default function TableC (){
     return(
         <div className="tablec">
             <label>Sumário</label>
-            <br/>
-            <br/>
-            <br/>
             <div>
                 <table>
                     <tr>

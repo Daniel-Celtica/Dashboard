@@ -223,6 +223,13 @@ body{
     padding: 5px;
 }
 
+.campos input {
+    margin-left: 20px;
+    margin-top: 20px;
+    height: 30px;
+    width: 100px;
+}
+
 /*CONTENT*/
 
 .content{
@@ -284,8 +291,10 @@ body{
 }
 
 .lc{
-    width: 70%;
+    height: 100%;
+    width: inherit;
     margin-right: 20px;
+    display: flex;
 }
 
 .t{
@@ -294,11 +303,18 @@ body{
 }
 
 .linec{
+    width: 100%;
+    height: auto;
     background-color: #FFF;
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0px 2px 5px #B3B3B3;
 }
+
+.linec canvas{
+    margin-top: 20px;
+}
+
 
 .tablec{
     background-color: #FFF;
@@ -309,6 +325,7 @@ body{
 }
 
 .tablec div{
+    margin-top: 20px;
     width: 100%;
     display: flex;
     justify-content: center;

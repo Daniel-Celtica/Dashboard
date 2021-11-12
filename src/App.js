@@ -8,20 +8,6 @@ import Filtro from "./components/Filtro/Filtro";
 function App (){
   const [inactive, setInactive] = useState(false);
   
-  
-  // usePageViews();
-  
-
-  // function usePageViews() {
-  //   let local = useLocation();
-  //   useEffect(() => {
-  //     let ga = 'b'
-  //     ga.send(["pageview", location.pathname]);
-  //   }, [local]);
-  // }
-
-  
-
   return (
     <div className="app">
       <BrowserRouter>

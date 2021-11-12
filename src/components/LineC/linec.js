@@ -1,121 +1,119 @@
-import React from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer
-} from "recharts";
+import React, { useEffect, useState } from "react";
+import { Line } from "react-chartjs-2";
 
-const data = [
-  {
-    name: "JAN",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
-  },
-  {
-    name: "FEV",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
-  },
-  {
-    name: "MAR",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290
-  },
-  {
-    name: "ABR",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
-  },
-  {
-    name: "MAI",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
-  },
-  {
-    name: "JUN",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "JUL",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
-  },
-  {
-    name: "AGO",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
-  },
-  {
-    name: "SET",
-    uv: 2000,
-    pv: 7800,
-    amt: 2290
-  },
-  {
-    name: "OUT",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
-  },
-  {
-    name: "NOV",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
-  },
-  {
-    name: "DEZ",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-];
+/*if (filtro === ano) {exibe labels com mês}
+  if else (filtro === mês) {exibe labels com dia (7 em 7 dias)}*/
+
+//const dataTOP = [32, 45, 12, 76, 69, 50, 90, 100, 8 , 70, 90, 100]; /*TESTE*/
 
 export default function LineC() {
+
+  // let [chartData, setChartData] = useState({});
+
+  // useEffect(() => {
+  //   setChartData({
+  //     labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho' , 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
+  //       datasets: [
+  //         {
+  //           label: 'TESTE1',
+  //           data: [32, 45, 12, 76, 69, 50, 90, 100, 8 , 70, 90, 100],
+  //           fill: false,
+  //           borderWidth: 2,
+  //           backgroundColor: '#B14545',
+  //           borderColor: '#B14545', 
+  //         },
+  //         {
+  //           label: 'TESTE2',
+  //           data: [50, 8, 69, 65, 32, 40, 21, 31, 20, 78, 60, 30],
+  //           fill: false,
+  //           borderWidth: 2,
+  //           backgroundColor: '#D9AE3F',
+  //           borderColor: '#D9AE3F', 
+  //         },
+  //         {
+  //           label: 'TESTE3',
+  //           data: [6, 98, 79, 84, 90, 88, 79, 81, 97 , 50, 75, 100],
+  //           fill: false,
+  //           borderWidth: 2,
+  //           backgroundColor: '#629F64',
+  //           borderColor: '#629F64', 
+  //         },
+  //       ],
+  //   })
+  // }, [chartData])
+
+  // let [labelsData, setLabelsData] = useState({});
+
+  // let [troca, setTroca] = useState(false);
+
+  // const changeLabels = () => {
+  //   if (troca) {
+  //     setLabelsData({ labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho' , 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ]})
+  //   }else{
+  //     setLabelsData({ labels: ['01/08-07/08', '08/08-14/08', '15/08-21/08', '22/08-28/08', '29/08-30/08']})
+  //   }
+
+  //   // troca ? setLabelsData ({ labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho' , 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ]}) : 
+  //   // ({ labels: ['01/08-07/08', '08/08-14/08', '15/08-21/08', '22/08-28/08', '29/08-30/08']})
+  // }
+
+  // useEffect(() => {
+  //   changeLabels()
+  // }, [troca])
+
+  const options = {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+    plugins:{
+      legend: {
+        position: 'bottom'
+      }
+    },
+  };
+
+  const dataPerdas = {
+    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho' , 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
+        datasets: [
+          {
+            label: 'TESTE1',
+            data: [32, 45, 12, 76, 69, 50, 90, 100, 8 , 70, 90, 100],
+            fill: false,
+            borderWidth: 2,
+            backgroundColor: '#B14545',
+            borderColor: '#B14545', 
+          },
+          {
+            label: 'TESTE2',
+            data: [50, 8, 69, 65, 32, 40, 21, 31, 20, 78, 60, 30],
+            fill: false,
+            borderWidth: 2,
+            backgroundColor: '#D9AE3F',
+            borderColor: '#D9AE3F', 
+          },
+          {
+            label: 'TESTE3',
+            data: [6, 98, 79, 84, 90, 88, 79, 81, 97 , 50, 75, 100],
+            fill: false,
+            borderWidth: 2,
+            backgroundColor: '#629F64',
+            borderColor: '#629F64', 
+          },
+        ],
+      };
+
   return (
     <div className="linec">
-      <label>Gráfico em Linha</label>
-      <ResponsiveContainer width="100%" height={324.5}>
-        <LineChart
-        data={data}
-        margin={{
-            top: 30,
-            right: 0,
-            left: 0,
-            bottom: 0
-        }}
-        >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" fontSize="15" />
-        <YAxis yAxisId="left" fontSize="15" />
-        <YAxis yAxisId="right" orientation="right" />
-        <Tooltip />
-        <Legend />
-        <Line
-            yAxisId="left"
-            type="monotone"
-            dataKey="pv"
-            stroke="#B14545"
-            activeDot={{ r: 8 }}
-        />
-        <Line yAxisId="left" type="monotone" dataKey="uv" stroke="#D9AE3F" />
-        <Line yAxisId="left" type="monotone" dataKey="amt" stroke="#629F64" />
-        </LineChart>
-      </ResponsiveContainer>  
+      <label>Comparativo de perdas</label>
+       <Line data={dataPerdas} options={options} height={"80%"}  />
+       {/* <button onClick={() => setTroca(!troca)}>TROCAR LABEL</button> */}
+
     </div>
   );
 }

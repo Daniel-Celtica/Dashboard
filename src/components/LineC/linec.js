@@ -1,119 +1,103 @@
-import React, { useEffect, useState } from "react";
-import { Line } from "react-chartjs-2";
+import React from "react";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
-/*if (filtro === ano) {exibe labels com mês}
-  if else (filtro === mês) {exibe labels com dia (7 em 7 dias)}*/
+const data = [
+  {
+    name: "JAN",
+    "Perdas Água" : 5,
+    "Perdas Esgoto": 5,
+    "Perdas Veículos": 0
+  },
+  {
+    name: "FEV",
+    "Perdas Água" : 10,
+    "Perdas Esgoto": 25,
+    "Perdas Veículos": 15
+  },
+  {
+    name: "MAR",
+    "Perdas Água" : 15,
+    "Perdas Esgoto": 55,
+    "Perdas Veículos": 10
+  },
+  {
+    name: "ABR",
+    "Perdas Água" : 25,
+    "Perdas Esgoto": 35,
+    "Perdas Veículos": 20
+  },
+  {
+    name: "MAI",
+    "Perdas Água" : 20,
+    "Perdas Esgoto": 45,
+    "Perdas Veículos": 25
+  },
+  {
+    name: "JUN",
+    "Perdas Água" : 10,
+    "Perdas Esgoto": 55,
+    "Perdas Veículos": 0
+  },
+  {
+    name: "JUL",
+    "Perdas Água" : 25,
+    "Perdas Esgoto": 20,
+    "Perdas Veículos": 5
+  },
+  {
+    name: "AGO",
+    "Perdas Água" : 5,
+    "Perdas Esgoto": 60,
+    "Perdas Veículos": 25
+  },
+  {
+    name: "SET",
+    "Perdas Água" : 50,
+    "Perdas Esgoto": 40,
+    "Perdas Veículos": 15
+  },
+  {
+    name: "OUT",
+    "Perdas Água" : 15,
+    "Perdas Esgoto": 10,
+    "Perdas Veículos": 50
+  },
+  {
+    name: "NOV",
+    "Perdas Água" : 70,
+    "Perdas Esgoto": 0,
+    "Perdas Veículos": 60
+  },
+  {
+    name: "DEZ",
+    "Perdas Água" : 50,
+    "Perdas Esgoto": 5,
+    "Perdas Veículos": 70
+  },
+];
 
-//const dataTOP = [32, 45, 12, 76, 69, 50, 90, 100, 8 , 70, 90, 100]; /*TESTE*/
+export default function LineC(perda) {
 
-export default function LineC() {
-
-  // let [chartData, setChartData] = useState({});
-
-  // useEffect(() => {
-  //   setChartData({
-  //     labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho' , 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
-  //       datasets: [
-  //         {
-  //           label: 'TESTE1',
-  //           data: [32, 45, 12, 76, 69, 50, 90, 100, 8 , 70, 90, 100],
-  //           fill: false,
-  //           borderWidth: 2,
-  //           backgroundColor: '#B14545',
-  //           borderColor: '#B14545', 
-  //         },
-  //         {
-  //           label: 'TESTE2',
-  //           data: [50, 8, 69, 65, 32, 40, 21, 31, 20, 78, 60, 30],
-  //           fill: false,
-  //           borderWidth: 2,
-  //           backgroundColor: '#D9AE3F',
-  //           borderColor: '#D9AE3F', 
-  //         },
-  //         {
-  //           label: 'TESTE3',
-  //           data: [6, 98, 79, 84, 90, 88, 79, 81, 97 , 50, 75, 100],
-  //           fill: false,
-  //           borderWidth: 2,
-  //           backgroundColor: '#629F64',
-  //           borderColor: '#629F64', 
-  //         },
-  //       ],
-  //   })
-  // }, [chartData])
-
-  // let [labelsData, setLabelsData] = useState({});
-
-  // let [troca, setTroca] = useState(false);
-
-  // const changeLabels = () => {
-  //   if (troca) {
-  //     setLabelsData({ labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho' , 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ]})
-  //   }else{
-  //     setLabelsData({ labels: ['01/08-07/08', '08/08-14/08', '15/08-21/08', '22/08-28/08', '29/08-30/08']})
-  //   }
-
-  //   // troca ? setLabelsData ({ labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho' , 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ]}) : 
-  //   // ({ labels: ['01/08-07/08', '08/08-14/08', '15/08-21/08', '22/08-28/08', '29/08-30/08']})
-  // }
-
-  // useEffect(() => {
-  //   changeLabels()
-  // }, [troca])
-
-  const options = {
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
-        },
-      ],
-    },
-    plugins:{
-      legend: {
-        position: 'bottom'
-      }
-    },
-  };
-
-  const dataPerdas = {
-    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho' , 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
-        datasets: [
-          {
-            label: 'TESTE1',
-            data: [32, 45, 12, 76, 69, 50, 90, 100, 8 , 70, 90, 100],
-            fill: false,
-            borderWidth: 2,
-            backgroundColor: '#B14545',
-            borderColor: '#B14545', 
-          },
-          {
-            label: 'TESTE2',
-            data: [50, 8, 69, 65, 32, 40, 21, 31, 20, 78, 60, 30],
-            fill: false,
-            borderWidth: 2,
-            backgroundColor: '#D9AE3F',
-            borderColor: '#D9AE3F', 
-          },
-          {
-            label: 'TESTE3',
-            data: [6, 98, 79, 84, 90, 88, 79, 81, 97 , 50, 75, 100],
-            fill: false,
-            borderWidth: 2,
-            backgroundColor: '#629F64',
-            borderColor: '#629F64', 
-          },
-        ],
-      };
+  // console.log(data)
 
   return (
     <div className="linec">
-      <label>Comparativo de perdas</label>
-       <Line data={dataPerdas} options={options} height={"80%"}  />
-       {/* <button onClick={() => setTroca(!troca)}>TROCAR LABEL</button> */}
-
+      <label>Gráfico em Linha</label>
+      <ResponsiveContainer width="99%" height={324.5}>
+        <LineChart
+        data={data}
+        margin={{ top: 30, right: -45, left: -20, bottom: 5 }}>
+        <CartesianGrid/>
+        <XAxis dataKey="name" fontSize="12" interval={0}/>
+        <YAxis yAxisId="left" fontSize="12" />
+        <YAxis yAxisId="right" orientation="right" />
+        <Tooltip />
+        <Legend wrapperStyle={{ position: "relative" }}/>
+        <Line yAxisId="left" type="linear" dataKey="Perdas Água" stroke="#B14545" activeDot={{stroke: "#B14545" , strokeWidth: 4}} dot={{ fill: "#B14545",  r: 4}} />
+        <Line yAxisId="left" type="linear" dataKey="Perdas Esgoto" stroke="#D9AE3F" activeDot={{stroke: "#D9AE3F" , strokeWidth: 4}} dot={{ fill: "#D9AE3F",  r: 4}} />
+        <Line yAxisId="left" type="linear" dataKey="Perdas Veículos" stroke="#629F64" activeDot={{stroke: "#629F64" , strokeWidth: 4}} dot={{ fill: "#629F64",  r: 4}} />
+        </LineChart>
+      </ResponsiveContainer>  
     </div>
   );
 }

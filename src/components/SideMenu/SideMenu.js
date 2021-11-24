@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import logo from "../../assets/logo.svg";
 import logomini from "../../assets/logomini.svg";
 import arrowRight from "../../assets/arrow-right.svg";
 import arrowLeft from "../../assets/arrow-left.svg";
+import menu from "../../assets/menu.svg";
+import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
+import useOnClickOutside from "../UseOnClickOutside";
 
 export const menuItems = [
   { name: "Home", exact: true, to: "/", src: process.env.PUBLIC_URL + 'home.svg', src2: process.env.PUBLIC_URL + 'home-white.svg',
@@ -48,54 +51,122 @@ export const menuItems = [
 
 const SideMenu = (props) => {
   const [inactive, setInactive] = useState(false);
+  const [inactiveFilter, setInactiveFilter] = useState(false);
+  const [title, setTitle] = useState("Home");
+  const ref = useRef();
+  
+  //#region "Screen size"
+  const [screenSize, getDimension] = useState({
+    dynamicWidth: window.innerWidth,
+    dynamicHeight: window.innerHeight
+  });
+
+  const setDimension = () => {
+      getDimension({
+          dynamicWidth: window.innerWidth,
+          dynamicHeight: window.innerHeight
+      })
+  }
+
+  useEffect(() => {
+      window.addEventListener('resize', setDimension);
+
+      return(() => {
+          window.removeEventListener('resize', setDimension);
+      })
+  }, [screenSize])
+  //#endregion
+
+  useEffect(() => {
+    setInactive(!inactive)
+  }, [screenSize.dynamicWidth <1500])
+
+  useOnClickOutside(ref, () => setInactive(!false))
+
+  function handleInactive() {
+    setInactive(!inactive)
+    setInactiveFilter(!inactiveFilter)
+  }
 
   useEffect(() => {
     props.onCollapse(inactive);
   }, [inactive]);
 
+  useEffect(() => {
+    props.onCollapse(inactiveFilter);
+  }, [inactiveFilter])
+
+  let local = useLocation();
+  
+  function handleTitulo (){
+    if(local.pathname === "/"){
+      setTitle("Home")
+    }if(local.pathname === "/perdas"){
+      setTitle("Perdas")
+    }if(local.pathname === "/dadostecnicos"){
+      setTitle("Dados Técnicos")
+    }if(local.pathname === "/os"){
+      setTitle("Ordem de Serviço")
+    }if(local.pathname === "/configuracoes"){
+      setTitle("Configurações")
+    }
+  }
+
+  useEffect(() => {
+    handleTitulo()
+  },[local])
+
+
   return (
-    <div className={`side-menu ${inactive ? "inactive" : ""}`}>
-        <div className="logo">
-          {inactive ? (
-            <img src={logomini} alt="celtica" />
-          ) : (
-            <img src={logo} alt="celtica" />
-          )}
-      </div>
+    
+    <div ref={ref} className={`side-menu ${inactive ? "inactive" : ""}`}>
+        
+        <div className="drawer">
+          <img src={menu} alt="show" onClick={() => handleInactive()} />
+          <label>{title}</label>
+        </div>
 
-      <div className="hello">
-        <i>Bom dia, NeymarJR!</i>
-      </div>
+        <div className="side">
+          <div className="logo">
+            {inactive ? (
+              <img src={logomini} alt="celtica" />
+            ) : (
+              <img src={logo} alt="celtica" />
+            )}
+          </div>
 
-      <div className="main-menu">
-        <ul>
-          {menuItems.map((menuItem, index) => (    
-            <li key={index} onClick={props.onClick}>
-            <NavLink
-              key={index}
-              name={menuItem.name}
-              src={menuItem.src}
-              src2={menuItem.src}
-              exact
-              to={menuItem.to}
-              className={`menu-item`}>
-              <div className="menu-icon">
-              {menuItem.svg}
-              </div>
-              <span>{menuItem.name}</span>
-            </NavLink>
-          </li>
+          <div className="hello">
+            <i>Bom dia, Carlos!</i>
+          </div>
 
-            
-          ))}
-        </ul>
-      </div>
-      <div onClick={() => setInactive(!inactive)} className="toggle-menu-btn">
-          {inactive ? (
-            <img src={arrowRight} alt="retrair"/>
-          ) : (
-            <img src={arrowLeft} alt="retrair"/>
-          )}
+          <div className="main-menu">
+            <ul>
+              {menuItems.map((menuItem, index) => (    
+                <li key={index} onClick={props.onClick}>
+                <NavLink
+                  key={index}
+                  name={menuItem.name}
+                  src={menuItem.src}
+                  src2={menuItem.src}
+                  exact
+                  to={menuItem.to}
+                  className={`menu-item`}>
+                  <div className="menu-icon">
+                  {menuItem.svg}
+                  </div>
+                  <span>{menuItem.name}</span>
+                </NavLink>
+              </li>
+              ))}
+            </ul>
+          </div>
+          <div onClick={() => handleInactive()} className="toggle-menu-btn">
+              {inactive ? (
+                <img src={arrowRight} alt="expandir"/>
+              ) : (
+                <img src={arrowLeft} alt="retrair"/>
+              )}
+          </div>
         </div>
     </div>
   );

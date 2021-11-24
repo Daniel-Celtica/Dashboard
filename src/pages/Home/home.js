@@ -3,7 +3,10 @@
 export default function Home (){
 
     return(
-        <div>
+        <div className="content">
+             <div className="soon">
+                Coming soon
+            </div>
         </div>
     )
 }

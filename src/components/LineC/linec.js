@@ -4,81 +4,79 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 const data = [
   {
     name: "JAN",
-    "Perdas Água" : 5,
-    "Perdas Esgoto": 5,
-    "Perdas Veículos": 0
+    "Vazamentos p/km de rede" : 5,
+    "Vazamento p/ligações": 5,
+    "Tempo médio correções": 0
   },
   {
     name: "FEV",
-    "Perdas Água" : 10,
-    "Perdas Esgoto": 25,
-    "Perdas Veículos": 15
+    "Vazamentos p/km de rede" : 25,
+    "Vazamento p/ligações": 10,
+    "Tempo médio correções": 15
   },
   {
     name: "MAR",
-    "Perdas Água" : 15,
-    "Perdas Esgoto": 55,
-    "Perdas Veículos": 10
+    "Vazamentos p/km de rede" : 55,
+    "Vazamento p/ligações": 15,
+    "Tempo médio correções": 10
   },
   {
     name: "ABR",
-    "Perdas Água" : 25,
-    "Perdas Esgoto": 35,
-    "Perdas Veículos": 20
+    "Vazamentos p/km de rede" : 35,
+    "Vazamento p/ligações": 25,
+    "Tempo médio correções": 20
   },
   {
     name: "MAI",
-    "Perdas Água" : 20,
-    "Perdas Esgoto": 45,
-    "Perdas Veículos": 25
+    "Vazamentos p/km de rede" : 45,
+    "Vazamento p/ligações": 20,
+    "Tempo médio correções": 25
   },
   {
     name: "JUN",
-    "Perdas Água" : 10,
-    "Perdas Esgoto": 55,
-    "Perdas Veículos": 0
+    "Vazamentos p/km de rede" : 55,
+    "Vazamento p/ligações": 10,
+    "Tempo médio correções": 0
   },
   {
     name: "JUL",
-    "Perdas Água" : 25,
-    "Perdas Esgoto": 20,
-    "Perdas Veículos": 5
+    "Vazamentos p/km de rede" : 20,
+    "Vazamento p/ligações": 25,
+    "Tempo médio correções": 5
   },
   {
     name: "AGO",
-    "Perdas Água" : 5,
-    "Perdas Esgoto": 60,
-    "Perdas Veículos": 25
+    "Vazamentos p/km de rede" : 60,
+    "Vazamento p/ligações": 5,
+    "Tempo médio correções": 25
   },
   {
     name: "SET",
-    "Perdas Água" : 50,
-    "Perdas Esgoto": 40,
-    "Perdas Veículos": 15
+    "Vazamentos p/km de rede" : 40,
+    "Vazamento p/ligações": 50,
+    "Tempo médio correções": 15
   },
   {
     name: "OUT",
-    "Perdas Água" : 15,
-    "Perdas Esgoto": 10,
-    "Perdas Veículos": 50
+    "Vazamentos p/km de rede" : 10,
+    "Vazamento p/ligações": 15,
+    "Tempo médio correções": 50
   },
   {
     name: "NOV",
-    "Perdas Água" : 70,
-    "Perdas Esgoto": 0,
-    "Perdas Veículos": 60
+    "Vazamentos p/km de rede" : 0,
+    "Vazamento p/ligações": 70,
+    "Tempo médio correções": 60
   },
   {
     name: "DEZ",
-    "Perdas Água" : 50,
-    "Perdas Esgoto": 5,
-    "Perdas Veículos": 70
+    "Vazamentos p/km de rede" : 5,
+    "Vazamento p/ligações": 50,
+    "Tempo médio correções": 70
   },
 ];
 
-export default function LineC(perda) {
-
-  // console.log(data)
+export default function LineC(perda) { 
 
   return (
     <div className="linec">
@@ -93,9 +91,9 @@ export default function LineC(perda) {
         <YAxis yAxisId="right" orientation="right" />
         <Tooltip />
         <Legend wrapperStyle={{ position: "relative" }}/>
-        <Line yAxisId="left" type="linear" dataKey="Perdas Água" stroke="#B14545" activeDot={{stroke: "#B14545" , strokeWidth: 4}} dot={{ fill: "#B14545",  r: 4}} />
-        <Line yAxisId="left" type="linear" dataKey="Perdas Esgoto" stroke="#D9AE3F" activeDot={{stroke: "#D9AE3F" , strokeWidth: 4}} dot={{ fill: "#D9AE3F",  r: 4}} />
-        <Line yAxisId="left" type="linear" dataKey="Perdas Veículos" stroke="#629F64" activeDot={{stroke: "#629F64" , strokeWidth: 4}} dot={{ fill: "#629F64",  r: 4}} />
+        <Line yAxisId="left" type="linear" dataKey="Vazamentos p/km de rede" stroke="#B14545" activeDot={{stroke: "#B14545" , strokeWidth: 4}} dot={{ fill: "#B14545",  r: 4}} />
+        <Line yAxisId="left" type="linear" dataKey="Vazamento p/ligações" stroke="#D9AE3F" activeDot={{stroke: "#D9AE3F" , strokeWidth: 4}} dot={{ fill: "#D9AE3F",  r: 4}} />
+      <Line yAxisId="left" type="linear" dataKey="Tempo médio correções" stroke="#629F64" activeDot={{stroke: "#629F64" , strokeWidth: 4}} dot={{ fill: "#629F64",  r: 4}} />
         </LineChart>
       </ResponsiveContainer>  
     </div>

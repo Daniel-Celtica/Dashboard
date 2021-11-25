@@ -17,9 +17,18 @@ export default function Filtro (props){
     //armazenar dados do filtro no local storage depois do submit
     //só carregar content quando filtro estiver carregado
 
+    async function handleFilter(e) {
+        e.preventDefault();
+
+        
+
+    }
+
     useEffect(() => {
         async function getAno() {
             const response = await api.get('dashboard/indicadores')
+
+            // console.log(response.data)
             
             setAno(
                 Object.entries( response.data.reduce((acc, {ano}) => ({
@@ -53,7 +62,6 @@ export default function Filtro (props){
 
 
         }
-        
         getAno()
         setLoading(false);
     },[])  
@@ -77,7 +85,7 @@ export default function Filtro (props){
         local.pathname === "/" || local.pathname === "/configuracoes" ? (
             null
         ) : ( 
-        <form ref={ref} className={`filtro ${inactiveFilter ? "inactiveFilter" : ""}`}>
+        <form ref={ref} className={`filtro ${inactiveFilter ? "inactiveFilter" : ""}`} onSubmit={handleFilter}>
         {inactiveFilter ? (
             <img src={filtro} onClick={() => setInactiveFilter(!inactiveFilter)} />
         ) : (

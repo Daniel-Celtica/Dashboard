@@ -5,30 +5,25 @@ export default function TableC (){
             <div>
                 <table>
                     <tr>
-                        <th>Número de equipes</th>
+                        <th>Vazamento p/km de rede</th>
                         <td>5</td>
                     </tr>
                     <tr>
-                        <th>Número de ocorrências</th>
+                        <th>Vazamento p/ligações</th>
                         <td>50</td>
                     </tr>
                     <tr>
-                        <th>Número de hidrometros</th>
+                        <th>Tempo médio de correção </th>
                         <td>100</td>
                     </tr>
                     <tr>
-                        <th>Equipamentos</th>
+                        <th>Idade média hidrometros</th>
                         <td>30</td>
                     </tr>
                     <tr>
-                        <th>Quantidade de veículos</th>
+                        <th>Infrações confirmadas</th>
                         <td>10</td>
                     </tr>
-                    <tr>
-                        <th>Gasto total</th>
-                        <td>200</td>
-                    </tr>
-                    
                 </table>
             </div>
         </div>

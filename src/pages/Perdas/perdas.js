@@ -12,161 +12,161 @@ export default function Perdas (){
             "name" : "Perdas",
             "data" : [
                 {
-                    "name" : "Perdas Esgoto",
+                    "name" : "Vazamentos p/km de rede",
                     "data" : [
                         {
                             "name" : "JAN",
-                            "valor" : "5"
+                            "valor" : 5
                         },
                         {
                             "name" : "FEV",
-                            "valor" : "25"
+                            "valor" : 25
                         },
                         {
                             "name" : "MAR",
-                            "valor" : "55"
+                            "valor" : 55
                         },
                         {
                             "name" : "ABR",
-                            "valor" : "35"
+                            "valor" : 35
                         },
                         {
                             "name" : "MAI",
-                            "valor" : "45"
+                            "valor" : 45
                         },
                         {
                             "name" : "JUN",
-                            "valor" : "55"
+                            "valor" : 55
                         },
                         {
                             "name" : "JUL",
-                            "valor" : "20"
+                            "valor" : 20
                         },
                         {
                             "name" : "AGO",
-                            "valor" : "60"
+                            "valor" : 60
                         },
                         {
                             "name" : "SET",
-                            "valor" : "40"
+                            "valor" : 40
                         },
                         {
                             "name" : "OUT",
-                            "valor" : "10"
+                            "valor" : 10
                         },
                         {
                             "name" : "NOV",
-                            "valor" : "0"
+                            "valor" : 0
                         },
                         {
                             "name" : "DEZ",
-                            "valor" : "5"
+                            "valor" : 5
                         }
                     ]
                 },
                 {
-                    "name" : "Perdas Água",
+                    "name" : "Vazamento p/ligações",
                     "data" : [
                         {
                             "name" : "JAN",
-                            "valor" : "5"
+                            "valor" : 5
                         },
                         {
                             "name" : "FEV",
-                            "valor" : "10"
+                            "valor" : 10
                         },
                         {
                             "name" : "MAR",
-                            "valor" : "15"
+                            "valor" : 15
                         },
                         {
                             "name" : "ABR",
-                            "valor" : "25"
+                            "valor" : 25
                         },
                         {
                             "name" : "MAI",
-                            "valor" : "20"
+                            "valor" : 20
                         },
                         {
                             "name" : "JUN",
-                            "valor" : "10"
+                            "valor" : 10
                         },
                         {
                             "name" : "JUL",
-                            "valor" : "25"
+                            "valor" : 25
                         },
                         {
                             "name" : "AGO",
-                            "valor" : "5"
+                            "valor" : 5
                         },
                         {
                             "name" : "SET",
-                            "valor" : "50"
+                            "valor" : 50
                         },
                         {
                             "name" : "OUT",
-                            "valor" : "15"
+                            "valor" : 15
                         },
                         {
                             "name" : "NOV",
-                            "valor" : "70"
+                            "valor" : 70
                         },
                         {
                             "name" : "DEZ",
-                            "valor" : "50"
+                            "valor" : 50
                         }
                     ]
                 },
                 {
-                    "name" : "Perdas Veículos",
+                    "name" : "Tempo médio correções",
                     "data" : [
                         {
                             "name" : "JAN",
-                            "valor" : "0"
+                            "valor" : 0
                         },
                         {
                             "name" : "FEV",
-                            "valor" : "15"
+                            "valor" : 15
                         },
                         {
                             "name" : "MAR",
-                            "valor" : "10"
+                            "valor" : 10
                         },
                         {
                             "name" : "ABR",
-                            "valor" : "20"
+                            "valor" : 20
                         },
                         {
                             "name" : "MAI",
-                            "valor" : "25"
+                            "valor" : 25
                         },
                         {
                             "name" : "JUN",
-                            "valor" : "0"
+                            "valor" : 0
                         },
                         {
                             "name" : "JUL",
-                            "valor" : "5"
+                            "valor" : 5
                         },
                         {
                             "name" : "AGO",
-                            "valor" : "25"
+                            "valor" : 25
                         },
                         {
                             "name" : "SET",
-                            "valor" : "15"
+                            "valor" : 15
                         },
                         {
                             "name" : "OUT",
-                            "valor" : "50"
+                            "valor" : 50
                         },
                         {
                             "name" : "NOV",
-                            "valor" : "60"
+                            "valor" : 60
                         },
                         {
                             "name" : "DEZ",
-                            "valor" : "70"
+                            "valor" : 70
                         }
                     ]
                 }

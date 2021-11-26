@@ -1,7 +1,5 @@
 export default function LabelC (dataPerda){
 
-
-    console.log(dataPerda)
     return(
         <div className="labelc">
             {/* icone ???? */}
@@ -20,7 +18,7 @@ export default function LabelC (dataPerda){
                 )}
                 {/*indicador*/}
                 {dataPerda.dataPerda.name === "Tempo médio correções" ? (
-                    <span className="medida">Hr</span>
+                    <span className="medida">min</span>
                 ) : (
                     <span className="medida">L</span>
                 ) }

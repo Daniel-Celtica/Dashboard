@@ -6,7 +6,7 @@ const barcolors = ["#B14545", "#E9524C", "#F97F3C", "#FFCD48", "#FFF05F", "#B2D6
 
 export default function BarC (dataPerda){
 
-  // console.log(dataPerda.dataPerda)
+  // console.log(dataPerda)
   const data = dataPerda.dataPerda;
 
   return (
@@ -15,7 +15,8 @@ export default function BarC (dataPerda){
     <ResponsiveContainer height={237.5}>
     <BarChart    
       data={data.data}
-      margin={{ top: 30, right: 0, left: -40, bottom: 5 }}>
+      margin={{ top: 30, right: 0, left: -30, bottom: 5 }}
+      >
       <CartesianGrid  />
       <XAxis dataKey="name" fontSize="12" interval={0}/>
       <YAxis fontSize="10" />

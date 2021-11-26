@@ -20,12 +20,17 @@ export default function Filtro (props){
     async function handleFilter(e) {
         e.preventDefault();
 
-        
-
+        // if(ano === 2020){
+        //     alert("teste 2020")
+        // }if (ano === 2021){
+        //     alert("teste 2020")
+        // }
     }
 
+    
+
     useEffect(() => {
-        async function getAno() {
+        async function getDadosFiltro() {
             const response = await api.get('dashboard/indicadores')
 
             // console.log(response.data)
@@ -62,8 +67,8 @@ export default function Filtro (props){
 
 
         }
-        getAno()
-        setLoading(false);
+        getDadosFiltro()
+        setLoading(false)
     },[])  
 
     useOnClickOutside(ref, () => setInactiveFilter(!false))
@@ -98,6 +103,7 @@ export default function Filtro (props){
             <div>
                 <label className="title">Ano:</label>
                 <select name="ano" id="ano"> 
+                {/* <option value="todos">{new Date().getFullYear()}</option> */}
                 {/*faz um map no array de ano e cria uma option */}
                 {ano.map(index => {
                     return(
@@ -109,8 +115,9 @@ export default function Filtro (props){
             <div>
                 <label className="title">Bairro:</label>
                 <select name="bairro" id="bairro"> 
-                {/*faz um map no array de bairro e cria uma option */}
-                {bairro.map(index => {
+                    <option value="todos">TODOS</option>
+                    {/*faz um map no array de bairro e cria uma option */}
+                    {bairro.map(index => {
                     return(
                         <option key={index.label} value={index.label}>{index.label}</option>
                     )
@@ -120,12 +127,13 @@ export default function Filtro (props){
             <div>
                 <label className="title">Mês:</label>
                 <select name="mes" id="mes">
+                    <option value="todos">TODOS</option>
                     {/*faz um map no array de mes e cria uma option */}
-                   {mes.map(index => {
+                    {mes.map(index => {
                        return(
                         <option key={index.label} value={index.label}>{index.label}</option>
                        )
-                   })}
+                    })}
                 </select>
             </div>
             <input type="submit" value="Filtrar" className="btnfiltrar"></input>

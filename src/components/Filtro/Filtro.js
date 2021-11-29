@@ -13,18 +13,41 @@ export default function Filtro (props){
     const [ano, setAno] = useState([]); 
     const [bairro, setBairro] = useState([]); 
     const [mes, setMes] = useState([]); 
-
+    const [selectedAno, setSelectedAno] = useState('');
+    const [selectedBairro, setSelectedBairro] = useState('TODOS');
+    const [selectedMes, setSelectedMes] = useState('TODOS');
+    const [filtro, setFiltro] = useState([])
+    
     //armazenar dados do filtro no local storage depois do submit
     //só carregar content quando filtro estiver carregado
+    
 
-    async function handleFilter(e) {
+    function HandleFilter(e) {
         e.preventDefault();
 
-        // if(ano === 2020){
-        //     alert("teste 2020")
-        // }if (ano === 2021){
-        //     alert("teste 2020")
-        // }
+        useEffect(() => {
+            setFiltro({
+                ano: selectedAno,
+                bairro: selectedBairro,
+                mes: selectedMes
+            })
+        }, [])
+        
+        console.log(filtro)
+
+        localStorage.setItem('filtro', JSON.stringify(filtro));
+    }
+
+    function changeAno(e) {
+        setSelectedAno(e.target.value)
+    }
+
+    function changeBairro(e) {
+        setSelectedBairro(e.target.value)
+    }
+
+    function changeMes(e) {
+        setSelectedMes(e.target.value)
     }
 
     
@@ -36,13 +59,13 @@ export default function Filtro (props){
             // console.log(response.data)
             
             setAno(
-                Object.entries( response.data.reduce((acc, {ano}) => ({
+                (Object.entries( response.data.reduce((acc, {ano}) => ({
                     ...acc,
                         [ano]: ++acc[ano] || 1
                 }), {})).map(([k, v]) => ({
                     label: k,
                     value: v
-                }))              
+                }))).sort((a, b) => (a.label < b.label) ? 1 : -1)              
             )
 
             setBairro(
@@ -90,7 +113,7 @@ export default function Filtro (props){
         local.pathname === "/" || local.pathname === "/configuracoes" ? (
             null
         ) : ( 
-        <form ref={ref} className={`filtro ${inactiveFilter ? "inactiveFilter" : ""}`} onSubmit={handleFilter}>
+        <form ref={ref} className={`filtro ${inactiveFilter ? "inactiveFilter" : ""}`} onSubmit={HandleFilter}>
         {inactiveFilter ? (
             <img src={filtro} onClick={() => setInactiveFilter(!inactiveFilter)} />
         ) : (
@@ -102,7 +125,7 @@ export default function Filtro (props){
         <div className="campos">
             <div>
                 <label className="title">Ano:</label>
-                <select name="ano" id="ano"> 
+                <select name="ano" id="ano" onChange={changeAno} value={selectedAno} select={filtro.ano}> 
                 {/* <option value="todos">{new Date().getFullYear()}</option> */}
                 {/*faz um map no array de ano e cria uma option */}
                 {ano.map(index => {
@@ -114,7 +137,7 @@ export default function Filtro (props){
             </div>
             <div>
                 <label className="title">Bairro:</label>
-                <select name="bairro" id="bairro"> 
+                <select name="bairro" id="bairro" onChange={changeBairro} value={selectedBairro} select={filtro.bairro}> 
                     <option value="todos">TODOS</option>
                     {/*faz um map no array de bairro e cria uma option */}
                     {bairro.map(index => {
@@ -126,7 +149,7 @@ export default function Filtro (props){
             </div>
             <div>
                 <label className="title">Mês:</label>
-                <select name="mes" id="mes">
+                <select name="mes" id="mes" onChange={changeMes} value={selectedMes} select={filtro.mes}>
                     <option value="todos">TODOS</option>
                     {/*faz um map no array de mes e cria uma option */}
                     {mes.map(index => {

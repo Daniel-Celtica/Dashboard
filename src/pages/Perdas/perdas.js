@@ -3,7 +3,6 @@ import BarC from "../../components/BarC/barc";
 import LabelC from "../../components/LabelC/labelc";
 import LineC from "../../components/LineC/linec";
 import TableC from "../../components/TableC/tablec";
-import loadingSVG from "../../assets/loading.svg";
 import api from "../../services/api";
 
 export default function Perdas (){
@@ -65,11 +64,12 @@ export default function Perdas (){
         return(
             <div className="content">
                 <h1>
-                    <label>Carregando gráficos...</label>
-                    <div className="obj1"></div>
-                    <div className="obj2"></div>
-                    <div className="obj3"></div>
-                    {/* <img src={loadingSVG} alt="..." />; */}
+                    <div className="animatedLoading">
+                        <div className="obj1"></div>
+                        <div className="obj2"></div>
+                        <div className="obj3"></div>
+                    </div>
+                    <label>Carregando gráficos</label>
                 </h1>
             </div>
         )
@@ -80,9 +80,9 @@ export default function Perdas (){
         <div className="content-top">
             {perdas.map((perda)=>{
             return(
-                <div key={perda} className="twoinone">
-                    <LabelC key={perda} dataPerda={perda}></LabelC>
-                    <BarC key={perda} dataPerda={perda}></BarC>
+                <div className="twoinone">
+                    <LabelC dataPerda={perda}></LabelC>
+                    <BarC dataPerda={perda}></BarC>
                 </div>
             )
             })}

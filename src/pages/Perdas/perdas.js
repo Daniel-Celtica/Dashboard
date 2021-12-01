@@ -12,6 +12,9 @@ export default function Perdas (){
 
     useEffect(() => {
         async function getDadosFiltro() {
+            //'dashboard/indicadores/cidadeid/ano/bairro/mes'
+
+            //if (mes === todos && bairro === todos) {busca dados por ano gera dados abaixo}
             const response = await api.get('dashboard/indicadores')
 
             setResponseData(response.data)
@@ -52,6 +55,19 @@ export default function Perdas (){
             }              
             setPerdas([dadoGrafico1, dadoGrafico2, dadoGrafico3])
             setLoading(false)
+
+            //if (bairro !== 'todos' && mes === 'todos') {selecionou somente bairro e ano}
+            //'dashboard/indicadores/cidadeid/ano/bairro'
+
+            //if (bairro === 'todos' && mes !== 'todos') {selecionou somente mes e ano}
+            //gráfico com intervalo de 5,6 ou 7 dias
+            //'dashboard/indicadores/cidadeid/ano/bairro='todos'/mes'
+
+            //if (bairro !== 'todos' && mes !== 'todos') {selecionou tudo}
+            //gráfico com intervalo de 5,6 ou 7 dias
+            //'dashboard/indicadores/cidadeid/ano/bairro/mes'
+
+
         }
 
         getDadosFiltro()

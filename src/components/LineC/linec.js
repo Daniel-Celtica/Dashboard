@@ -7,7 +7,7 @@ import api from "../../services/api";
 export default function LineC(dataPerda) {
   
 
-  console.log(dataPerda)
+  // console.log(dataPerda)
 
 
   //mover de lineC para Perdas

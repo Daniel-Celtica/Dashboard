@@ -2,7 +2,7 @@ export default function TableC (dataPerda){
 
     //soma de todos os valores de cada chave
     //mover apra Perdas.js
-    console.log(dataPerda)
+    // console.log(dataPerda)
 
     const data1 = {
         name: "Vazamento p/km de rede",
@@ -29,16 +29,18 @@ export default function TableC (dataPerda){
 
     const data = ([data1,data2,data3,data4,data5]) 
 
-    console.log(data)
+    // console.log(data)
+
     return(
         <div className="tablec">
             <label>Sumário</label>
             <div>
                 <table>
+                    <tbody>
 
                     {data.map(index => {
                         return(
-                        <tr>
+                        <tr key={index.name}>
                         <th>{index.name}</th>
                         <td>{index.valor} </td>
                         </tr>
@@ -65,6 +67,7 @@ export default function TableC (dataPerda){
                         <th>Infrações confirmadas</th>
                         <td>0</td>
                     </tr> */}
+                    </tbody>
                 </table>
             </div>
         </div>

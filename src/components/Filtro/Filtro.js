@@ -18,8 +18,8 @@ export default function Filtro (props){
     const [mes, setMes] = useState([]); 
 
     const [selectedAno, setSelectedAno] = useState('');
-    const [selectedBairro, setSelectedBairro] = useState('todos');
-    const [selectedMes, setSelectedMes] = useState('todos');
+    const [selectedBairro, setSelectedBairro] = useState('');
+    const [selectedMes, setSelectedMes] = useState('0');
 
     const [filtro, setFiltro] = useState([]);
 
@@ -31,6 +31,7 @@ export default function Filtro (props){
     //set o valor inicial de ano para o ano atual
     useEffect(() => {
         setSelectedAno(new Date().getFullYear().toString())
+        dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, bairro: selectedBairro, mes: selectedMes }})
     }, [loading])
     
     function HandleFilter(e) {
@@ -81,7 +82,7 @@ export default function Filtro (props){
                     ...acc,
                         [mes]: ++acc[mes] || 1
                 }), {})).map(([k, v]) => ({
-                    label: mesesSigla[k-1],
+                    label: k,
                     value: v
                 })) 
             )
@@ -136,7 +137,7 @@ export default function Filtro (props){
                 <div>
                     <label className="title">Bairro:</label>
                     <select name="bairro" id="bairro" onLoad={changeBairro} onChange={changeBairro} value={selectedBairro} select={filtro.bairro}> 
-                        <option value="todos">TODOS</option>
+                        <option value="">TODOS</option>
                         {/*faz um map no array de bairro e cria uma option */}
                         {bairro.map(index => {
                         return(
@@ -148,7 +149,7 @@ export default function Filtro (props){
                 <div>
                     <label className="title">Mês:</label>
                     <select name="mes" id="mes" onLoad={changeMes} onChange={changeMes} value={selectedMes} select={filtro.mes}>
-                        <option value="todos">TODOS</option>
+                        <option value="0">TODOS</option>
                         {/*faz um map no array de mes e cria uma option */}
                         {mes.map(index => {
                         return(

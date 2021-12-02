@@ -4,8 +4,8 @@ const INITIAL_STATE = {
     data: 
     {
         ano: '2021',
-        bairro: 'todos',
-        mes: 'todos'
+        bairro: '',
+        mes: '0'
     }
 };
 

@@ -11,7 +11,7 @@ export default function Perdas (){
     const [perdas, setPerdas] = useState([]);
     const [loading, setLoading] = useState(true);
     const [responseData, setResponseData] = useState([]);
-    const [teste, setTeste] = useState([]);
+
 
     const filtro = useSelector(state => state.data);
 
@@ -22,71 +22,35 @@ export default function Perdas (){
     useEffect(() => {
         async function getDadosFiltro() {
             //cidadeid sera fornecido pelo login
-            //'dashboard/indicadores/cidadeid/ano/bairro/mes'
-
-            if(filtro.mes === 'todos' && filtro.bairro === 'todos') {
-
-                //`'dashboard/indicadores/5/${filtro.ano}'`
-                
-                const response = await api.get('dashboard/indicadores')
-
-                setResponseData(response.data)
-                // console.log(response.data)
-    
-                const orderByMes = response.data.sort((a, b) => (a.mes > b.mes) ? 1 : -1)
-    
-                const mesesSigla = ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"];
-    
-                const dadoGrafico1 = {
-                    name: "Vazamento p/km de rede",
-                    data: (orderByMes.map(({mes,vazamentosKMRDA}) => ({name:mesesSigla[mes-1],valor:vazamentosKMRDA}))).reduce((a, c) => {
-                        let x = a.find(e => e.name === c.name)
-                        if(!x) a.push(Object.assign({},c))
-                        else  x.valor += c.valor
-                        return a
-                  },[])
-                };
-
-                const dadoGrafico2 = {
-                    name: "Vazamento p/ligações",
-                    data: (orderByMes.map(({mes,vazamentoLigacoes}) => ({name:mesesSigla[mes-1],valor:vazamentoLigacoes})).reduce((a, c) => {
-                        let x = a.find(e => e.name === c.name)
-                        if(!x) a.push(Object.assign({},c))
-                        else  x.valor += c.valor
-                        return a
-                  },[]))
-                };
-                
-                const dadoGrafico3 = {
-                    name: "Tempo médio correções",
-                    data: (orderByMes.map(({mes,tempoMedioCorrecao}) => ({name:mesesSigla[mes-1],valor:tempoMedioCorrecao}))).reduce((a, c) => {
-                        
-                        let x = a.find(e => e.name === c.name)
-                        if(!x) a.push(Object.assign({},c))
-                        else  x.valor += c.valor / response.data.length
-                        return a
-                  },[])
-                };
-
-                setPerdas([dadoGrafico1, dadoGrafico2, dadoGrafico3]);             
-            }
-           
             
+            if(filtro.mes !== '0') {
 
-            if(filtro.bairro !== 'todos' && filtro.mes === 'todos') {
-                //'dashboard/indicadores/cidadeid/ano/bairro'
-                alert('SELECIONOU UM BAIRRO')
+                // selecionou um bairro e um mês
+                if(filtro.bairro !== '' && filtro.mes !== '0') {
+                    //gráfico com intervalo de 5,6 ou 7 dias
+                    const response = await api.post('dashboard/indicadores',{
+                        CidadeId: 5,
+                        Mes: parseInt(filtro.mes),
+                        Ano: parseInt(filtro.ano),
+                        Regiao: filtro.bairro
+                    })
 
-                
-            }
-            
+                    setResponseData(response.data);
+                }
 
-            if(filtro.bairro === 'todos' && filtro.mes !== 'todos') {
-                // const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+                // selecionou um mês
+                if(filtro.bairro === '' && filtro.mes !== '0') {
                  
                 //gráfico com intervalo de 5,6 ou 7 dias
-                //'dashboard/indicadores/cidadeid/ano/bairro='todos'/mes'
-                // alert('SELECIONOU UM MÊS')
+                    const response = await api.post('dashboard/indicadores',{
+                        CidadeId: 5,
+                        Mes: parseInt(filtro.mes),
+                        Ano: parseInt(filtro.ano),
+                        Regiao: ""
+                    })
+
+                    setResponseData(response.data);
+                }
 
                 setPerdas([
                     {
@@ -141,16 +105,77 @@ export default function Perdas (){
                         ]
                     }
                 ])
-            }
-            
 
-            if(filtro.bairro !== 'todos' && filtro.mes !== 'todos') {
-                //gráfico com intervalo de 5,6 ou 7 dias
-                //'dashboard/indicadores/cidadeid/ano/bairro/mes'
-                alert('SELECIONOU UM BAIRRO E UM MES')
+                
+            }else {
+
+                // não selecionou um bairro nem um mês
+                if(filtro.mes === '0' && filtro.bairro === '') {                    
+                    const response = await api.post('dashboard/indicadores',{
+                        CidadeId: 5,
+                        Mes: 0,
+                        Ano:  parseInt(filtro.ano),
+                        Regiao: ""
+                    })
+
+                    setResponseData(response.data);
+                }
+                
+                // selecionou um bairro
+                if(filtro.bairro !== '' && filtro.mes === '0') {
+                    //'dashboard/indicadores/cidadeid/ano/bairro'
+
+                    const response = await api.post('dashboard/indicadores',{
+                        CidadeId: 5,
+                        Mes: 0,
+                        Ano: parseInt(filtro.ano),
+                        Regiao: filtro.bairro
+                    })
+
+                    setResponseData(response.data);
+                }            
+
+                // console.log(response.data)
+
+                const orderByMes = responseData.sort((a, b) => (a.mes > b.mes) ? 1 : -1)
+
+                const mesesSigla = ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"];
+
+                const dadoGrafico1 = {
+                    name: "Vazamento p/km de rede",
+                    data: (orderByMes.map(({mes,vazamentosKMRDA}) => ({name:mesesSigla[mes-1],valor:vazamentosKMRDA}))).reduce((a, c) => {
+                        let x = a.find(e => e.name === c.name)
+                        if(!x) a.push(Object.assign({},c))
+                        else  x.valor += c.valor
+                        return a
+                    },[])
+                };
+
+                const dadoGrafico2 = {
+                    name: "Vazamento p/ligações",
+                    data: (orderByMes.map(({mes,vazamentoLigacoes}) => ({name:mesesSigla[mes-1],valor:vazamentoLigacoes})).reduce((a, c) => {
+                        let x = a.find(e => e.name === c.name)
+                        if(!x) a.push(Object.assign({},c))
+                        else  x.valor += c.valor
+                        return a
+                    },[]))
+                };
+                
+                const dadoGrafico3 = {
+                    name: "Tempo médio correções",
+                    data: (orderByMes.map(({mes,tempoMedioCorrecao}) => ({name:mesesSigla[mes-1],valor:tempoMedioCorrecao}))).reduce((a, c) => {
+                        
+                        let x = a.find(e => e.name === c.name)
+                        if(!x) a.push(Object.assign({},c))
+                        else  x.valor += c.valor / responseData.length
+                        return a
+                    },[])
+                };
+
+                setPerdas([dadoGrafico1, dadoGrafico2, dadoGrafico3]);             
+
+                setLoading(false)
             }
-            
-            setLoading(false)
         }
 
         getDadosFiltro()

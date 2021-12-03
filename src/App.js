@@ -12,15 +12,15 @@ function App (){
   const ref = useRef();
   const [inactive, setInactive] = useState(false);
   const [inactiveFilter, setInactiveFilter] = useState(false);
+
   return (
     <div className="app">
       <Provider store={store}>
         <BrowserRouter>
-          
-          <SideMenu onCollapse={(inactive) => { setInactive(inactive) }} />
+          <SideMenu onCollapse={(inactive) => { setInactive(inactive) }}/>
           <Drawer/>
           <div className="container">
-            <Filtro onCollapse={(inactiveFilter) => {setInactiveFilter(inactiveFilter) }} />
+            <Filtro onCollapse={(inactiveFilter) => {setInactiveFilter(inactiveFilter) }}/>
             <Routes/>
           </div>
         </BrowserRouter>

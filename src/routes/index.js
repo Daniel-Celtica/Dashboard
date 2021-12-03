@@ -7,6 +7,7 @@ import Os from '../pages/OS/os';
 import Configuracoes from '../pages/Configuracoes/configuracoes';
 
 export default function Routes(){
+
     return(
         <Switch>
             <Route exact path="/" component={Home}/>

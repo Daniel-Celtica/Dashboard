@@ -7,8 +7,7 @@ import api from "../../services/api";
 export default function LineC(dataPerda) {
   
 
-  // console.log(dataPerda)
-
+  console.log(dataPerda)
 
   //mover de lineC para Perdas
   const line1 = dataPerda.dataPerda[0].data.map(item => {
@@ -33,8 +32,6 @@ export default function LineC(dataPerda) {
   });
 
   const data = (line1.map((item, i) => Object.assign({}, item, line2[i]))).map((item, i) => Object.assign({}, item, line3[i]));
-
-
 
 
   

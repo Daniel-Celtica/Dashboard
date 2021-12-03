@@ -6,7 +6,7 @@ import useOnClickOutside from "../UseOnClickOutside";
 import api from "../../services/api";
 import { useSelector, useDispatch } from "react-redux";
 
-export default function Filtro (props){
+export default function Filtro (props, start){
     const ref = useRef();
     let local = useLocation();
     const [inactiveFilter, setInactiveFilter] = useState(true);
@@ -51,9 +51,9 @@ export default function Filtro (props){
         setSelectedMes(e.target.value);
     }
 
-    useEffect(() => {
+    useEffect(() => {        
         async function getDadosFiltro() {
-            const response = await api.get('dashboard/indicadores')
+            const response = await api.get('dashboard/indicadores');
 
             // console.log(response.data)
             
@@ -87,7 +87,6 @@ export default function Filtro (props){
                 })) 
             )
             setLoading(false)
-            console.log(mes);
 
         }
         getDadosFiltro()

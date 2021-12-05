@@ -1,6 +1,6 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_598_129)">
-<g opacity="0.6">
+<g opacity="0.8">
 <path d="M331 157L222 512L679 358L331 157Z" fill="white" fill-opacity="0.2"/>
 <path d="M-17 628.019L222 512L-17 358V628.019Z" fill="white" fill-opacity="0.15"/>
 <path d="M-17 358L222 512L331 157L-17 358Z" fill="white" fill-opacity="0.25"/>
@@ -28,7 +28,8 @@
 <path d="M1723 961L1484 1115L1375 760L1723 961Z" fill="white" fill-opacity="0.3"/>
 <path d="M2071 760L2180 1115L1723 961L2071 760Z" fill="white" fill-opacity="0.2"/>
 <path d="M-365 157V-3L92 -91L-365 157Z" fill="white" fill-opacity="0.1"/>
-<path d="M331 157L-0.5 120L215 -46.5L331 157Z" fill="white" fill-opacity="0.1"/>
+<path d="M331 157L-17 358L215 -46.5L331 157Z" fill="white" fill-opacity="0.1"/>
+<path opacity="0.05" d="M189 0L-38 27.5L0 0H189Z" fill="white" fill-opacity="0.9"/>
 <path d="M331 157V-3L788 -91L331 157Z" fill="white" fill-opacity="0.1"/>
 <path d="M1027 157L679 358L788 -91L1027 157Z" fill="white" fill-opacity="0.1"/>
 <path opacity="0.05" d="M679 358L331 157L788 -91L679 358Z" fill="white" fill-opacity="0.9"/>

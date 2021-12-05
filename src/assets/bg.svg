@@ -1,0 +1,47 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_598_129)">
+<g opacity="0.6">
+<path d="M331 157L222 512L679 358L331 157Z" fill="white" fill-opacity="0.2"/>
+<path d="M-17 628.019L222 512L-17 358V628.019Z" fill="white" fill-opacity="0.15"/>
+<path d="M-17 358L222 512L331 157L-17 358Z" fill="white" fill-opacity="0.25"/>
+<path d="M679 760V358L222 512L679 760Z" fill="white" fill-opacity="0.1"/>
+<path d="M-17 760L331 961L222 512L-17 760Z" fill="white" fill-opacity="0.1"/>
+<path opacity="0.05" d="M331 961L679 760L222 512L331 961Z" fill="white" fill-opacity="0.9"/>
+<path d="M1027 961L1136 606L679 760L1027 961Z" fill="white" fill-opacity="0.2"/>
+<path d="M1375 358L1136 606L1375 760V358Z" fill="white" fill-opacity="0.15"/>
+<path d="M1375 760L1136 606L1027 961L1375 760Z" fill="white" fill-opacity="0.3"/>
+<path d="M679 358V518L1136 606L679 358Z" fill="white" fill-opacity="0.15"/>
+<path opacity="0.05" d="M1027 157L679 358L1136 606L1027 157Z" fill="white" fill-opacity="0.9"/>
+<path d="M1723 157L1832 512L1375 358L1723 157Z" fill="white" fill-opacity="0.2"/>
+<path d="M2071 628.019L1832 512L2071 358V628.019Z" fill="white" fill-opacity="0.15"/>
+<path d="M2071 358L1832 512L1723 157L2071 358Z" fill="white" fill-opacity="0.3"/>
+<path d="M1375 760V600L1832 512L1375 760Z" fill="white" fill-opacity="0.05"/>
+<path d="M2071 760L1723 961L1832 512L2071 760Z" fill="white" fill-opacity="0.1"/>
+<path d="M-17 760L92 1115L-365 961L-17 760Z" fill="white" fill-opacity="0.2"/>
+<path d="M331 1231.02L92 1115L331 961V1231.02Z" fill="white" fill-opacity="0.15"/>
+<path d="M331 961L92 1115L-17 760L331 961Z" fill="white" fill-opacity="0.3"/>
+<path d="M679 760L788 1115L331 961L679 760Z" fill="white" fill-opacity="0.2"/>
+<path d="M1027 1231.02L788 1115L1027 961V1231.02Z" fill="white" fill-opacity="0.15"/>
+<path d="M1027 961L788 1115L679 760L1027 961Z" fill="white" fill-opacity="0.3"/>
+<path d="M1375 760L1484 1115L1027 961L1375 760Z" fill="white" fill-opacity="0.2"/>
+<path d="M1723 1231.02L1484 1115L1723 961V1231.02Z" fill="white" fill-opacity="0.15"/>
+<path d="M1723 961L1484 1115L1375 760L1723 961Z" fill="white" fill-opacity="0.3"/>
+<path d="M2071 760L2180 1115L1723 961L2071 760Z" fill="white" fill-opacity="0.2"/>
+<path d="M-365 157V-3L92 -91L-365 157Z" fill="white" fill-opacity="0.1"/>
+<path d="M331 157L-0.5 120L215 -46.5L331 157Z" fill="white" fill-opacity="0.1"/>
+<path d="M331 157V-3L788 -91L331 157Z" fill="white" fill-opacity="0.1"/>
+<path d="M1027 157L679 358L788 -91L1027 157Z" fill="white" fill-opacity="0.1"/>
+<path opacity="0.05" d="M679 358L331 157L788 -91L679 358Z" fill="white" fill-opacity="0.9"/>
+<path d="M1723 157V-3L1266 -91L1723 157Z" fill="white" fill-opacity="0.1"/>
+<path d="M1027 157L1375 358L1266 -91L1027 157Z" fill="white" fill-opacity="0.1"/>
+<path opacity="0.05" d="M1375 358L1723 157L1266 -91L1375 358Z" fill="white" fill-opacity="0.9"/>
+<path d="M1723 157V-3L2180 -91L1723 157Z" fill="white" fill-opacity="0.1"/>
+<path opacity="0.05" d="M2071 358L1723 157L2180 -91L2071 358Z" fill="white" fill-opacity="0.9"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_598_129">
+<rect width="1920" height="1080" fill="white"/>
+</clipPath>
+</defs>
+</svg>

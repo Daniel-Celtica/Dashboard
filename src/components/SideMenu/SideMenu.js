@@ -17,6 +17,8 @@ export const menuItems = [
     <polygon fill="#375E65" points=" 13.3333,0.6803450000000002 13.2749,4.0940900000000005 25.7332,16.6201 29.2434,16.6769 29.3019,13.2631 16.8436,0.7371650000000001 13.3333,0.6803450000000002"></polygon>
     </svg>
  },
+
+ 
   { name: "Perdas", exact: true, to: `/perdas`, src: process.env.PUBLIC_URL + 'perdas.svg', src2: process.env.PUBLIC_URL + 'perdas-white.svg', 
     svg: <svg width="30" height="25" viewBox="0 0 30 25" fill="none" xmlns="http://www.w3.org/2000/svg">
     <polygon fill="#375E65" points=" 3,4 9,10.4379 9,25 3,25 3,4"></polygon>

@@ -3,7 +3,7 @@ import { createStore } from "redux";
 const INITIAL_STATE = {
     data: 
     {
-        ano: '2021',
+        ano: '',
         bairro: '',
         mes: '0'
     }

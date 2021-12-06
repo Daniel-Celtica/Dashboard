@@ -87,6 +87,7 @@ export default function Filtro (props, start){
                 })) 
             )
             setLoading(false)
+            
 
         }
         getDadosFiltro()

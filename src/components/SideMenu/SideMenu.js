@@ -36,7 +36,7 @@ export const menuItems = [
 },
   { name: "Ordem de Serviço", to: `/os`, src: process.env.PUBLIC_URL + 'os.svg', src2: process.env.PUBLIC_URL + 'os-white.svg',
     svg:<svg width="28" height="30" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="1" y="2.06885" width="2" height="25" rx="2.07407" stroke="#375E65" strokeWidth="3"></rect>  
+    <rect x="1.5" y="2.06885" width="2" height="25" rx="2.07407" stroke="#375E65" strokeWidth="3"></rect>  
     <path d="M19.9322 3.35286C20.4068 -3.85683 2.0565 2.57493 0 4.0953V24.8276C1.58192 23.169 12.339 15.2274 17.5593 22.013C20.5653 25.9202 22.7797 19.8925 28 23.2853V7.59373C24.2034 4.0953 19.5699 8.8565 19.9322 3.35286Z" fill="#629F64"/>
     </svg>
 },

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { BarChart, ResponsiveContainer, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell } from "recharts";
 
@@ -6,8 +6,7 @@ const barcolors = ["#B14545", "#E9524C", "#F97F3C", "#FFCD48", "#FFF05F", "#B2D6
 
 export default function BarC (dataPerda){
 
-  // console.log(dataPerda)
-  const data = dataPerda.dataPerda;
+  const data = dataPerda.dataPerda
 
   return (
     <div className="barc">

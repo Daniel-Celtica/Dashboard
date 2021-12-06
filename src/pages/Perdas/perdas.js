@@ -32,191 +32,84 @@ export default function Perdas (){
 
             setResponseData(response.data);
 
-            setLoading(false)
-            
-            //cidadeid sera fornecido pelo login
-            
-            // if(filtro.mes !== '0') {
-
-            //     // selecionou um bairro e um mês
-            //     if(filtro.bairro !== '' && filtro.mes !== '0') {
-            //         //gráfico com intervalo de 5,6 ou 7 dias
-            //         const response = await api.post('dashboard/indicadores',{
-            //             CidadeId: 5,
-            //             Mes: parseInt(filtro.mes),
-            //             Ano: parseInt(filtro.ano),
-            //             Regiao: filtro.bairro
-            //         })
-
-            //         setResponseData( await response.data);
-            //     }
-
-            //     // selecionou um mês
-            //     if(filtro.bairro === '' && filtro.mes !== '0') {
-                 
-            //     //gráfico com intervalo de 5,6 ou 7 dias
-            //         const response = await api.post('dashboard/indicadores',{
-            //             CidadeId: 5,
-            //             Mes: parseInt(filtro.mes),
-            //             Ano: parseInt(filtro.ano),
-            //             Regiao: ""
-            //         })
-
-            //         setResponseData( await response.data);
-            //     }
-
-            //     setPerdas([
-            //         {
-            //             name: 'Vazemento p/km de rede',
-            //             data: [
-            //                 {
-            //                     name: '01/01-05/01',
-            //                     valor: 6.246090220847677
-            //                 },
-            //                 {
-            //                     name: '06/01-11/01',
-            //                     valor: 0.246090220847677
-            //                 },
-            //                 {
-            //                     name: '12/01-17/01',
-            //                     valor: 1.246090220847677
-            //                 }
-            //             ]
-            //         },
-            //         {
-            //             name:'Vazamento p/ligações',
-            //             data: [
-            //                 {
-            //                     name: '01/01-05/01',
-            //                     valor: 1.246090220847677
-            //                 },
-            //                 {
-            //                     name: '06/01-11/01',
-            //                     valor: 5.246090220847677
-            //                 },
-            //                 {
-            //                     name: '12/01-17/01',
-            //                     valor: 2.246090220847677
-            //                 }
-            //             ]
-            //         },
-            //         {
-            //             name:'Tempo médio correções',
-            //             data: [
-            //                 {
-            //                     name: '01/01-05/01',
-            //                     valor: 7.246090220847677
-            //                 },
-            //                 {
-            //                     name: '06/01-11/01',
-            //                     valor: 8.246090220847677
-            //                 },
-            //                 {
-            //                     name: '12/01-17/01',
-            //                     valor: 0.246090220847677
-            //                 }
-            //             ]
-            //         }
-            //     ])
-
-                
-            // }else {
-
-            //     // não selecionou um bairro nem um mês
-            //     if(filtro.mes === '0' && filtro.bairro === '') {                    
-            //         const response = await api.post('dashboard/indicadores',{
-            //             CidadeId: 5,
-            //             Mes: 0,
-            //             Ano:  parseInt(filtro.ano),
-            //             Regiao: ""
-            //         })
-
-            //         setResponseData( await response.data);
-            //     }
-                
-            //     // selecionou um bairro
-            //     if(filtro.bairro !== '' && filtro.mes === '0') {
-            //         //'dashboard/indicadores/cidadeid/ano/bairro'
-
-            //         const response = await api.post('dashboard/indicadores',{
-            //             CidadeId: 5,
-            //             Mes: 0,
-            //             Ano: parseInt(filtro.ano),
-            //             Regiao: filtro.bairro
-            //         })
-
-            //         setResponseData( await response.data);
-            //     }            
-            
+            setLoading(false);
         }
-
         getDadosFiltro()
 
-      },[filtro])
+    },[filtro])
 
 
       useEffect(()=>{
 
-        const orderByMes = responseData.sort((a, b) => (a.mes > b.mes) ? 1 : -1)
+            const orderByMes = responseData.sort((a, b) => (a.mes > b.mes) ? 1 : -1);
 
-        const mesesSigla = ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"];
+            const mesesSigla = ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"];
 
-        const dadoGrafico1 = {
-            name: "Vazamento p/km de rede",
-            data: (orderByMes.map(({mes,vazamentosKMRDA}) => ({name:mesesSigla[mes-1],valor:vazamentosKMRDA}))).reduce((a, c) => {
-                let x = a.find(e => e.name === c.name)
-                if(!x) a.push(Object.assign({},c))
-                else  x.valor += c.valor
-                return a
-            },[])
-        };
+            const dadoGrafico1 = {
+                name: "NºOS de Vazamento p/km de rede",
+                data: (orderByMes.map(({mes,vazamentosKMRDA}) => ({name:mesesSigla[mes-1],valor:vazamentosKMRDA}))).reduce((a, c) => {
+                    let x = a.find(e => e.name === c.name)
+                    if(!x) a.push(Object.assign({},c))
+                    else  x.valor += c.valor
+                    return a
+                },[])
+            };
 
-        const dadoGrafico2 = {
-            name: "Vazamento p/ligações",
-            data: (orderByMes.map(({mes,vazamentoLigacoes}) => ({name:mesesSigla[mes-1],valor:vazamentoLigacoes})).reduce((a, c) => {
-                let x = a.find(e => e.name === c.name)
-                if(!x) a.push(Object.assign({},c))
-                else  x.valor += c.valor
-                return a
-            },[]))
-        };
-        
-        const dadoGrafico3 = {
-            name: "Tempo médio correções",
-            data: (orderByMes.map(({mes,tempoMedioCorrecao}) => ({name:mesesSigla[mes-1],valor:tempoMedioCorrecao}))).reduce((a, c) => {
-                let x = a.find(e => e.name === c.name)
-                if(!x) a.push(Object.assign({},c))
-                else  x.valor += c.valor / responseData.length
-                return a
-            },[])
-        };
+            const dadoGrafico2 = {
+                name: "NºOS de Vazamento p/ligações",
+                data: (orderByMes.map(({mes,vazamentoLigacoes}) => ({name:mesesSigla[mes-1],valor:vazamentoLigacoes})).reduce((a, c) => {
+                    let x = a.find(e => e.name === c.name)
+                    if(!x) a.push(Object.assign({},c))
+                    else  x.valor += c.valor
+                    return a
+                },[]))
+            };
+            
+            const dadoGrafico3 = {
+                name: "Tempo médio correções OS de vazamento",
+                data: (orderByMes.map(({mes,tempoMedioCorrecao}) => ({name:mesesSigla[mes-1],valor:tempoMedioCorrecao}))).reduce((a, c) => {
+                    let x = a.find(e => e.name === c.name)
+                    if(!x) a.push(Object.assign({},c))
+                    else  x.valor += c.valor / responseData.length
+                    return a
+                },[])
+            };
 
-        setPerdas([dadoGrafico1, dadoGrafico2, dadoGrafico3]);  
+            setPerdas([dadoGrafico1, dadoGrafico2, dadoGrafico3]);         
 
-        // const line1 = perdas[0].data.map(item => {
-        //     return {
-        //       name: item.name,
-        //       "Vazamento p/km de rede": item.valor,
-        //     };
-        //   });
-        
-        //   const line2 = perdas[1].data.map(item => {
-        //     return {
-        //       name: item.name,
-        //       "Vazamento p/ligações": item.valor,
-        //     };
-        //   });
-        
-        //   const line3 = perdas[2].data.map(item => {
-        //     return {
-        //       name: item.name,
-        //       "Tempo médio correções": item.valor,
-        //     };
-        //   });
-        
-        //   setLine((line1.map((item, i) => Object.assign({}, item, line2[i]))).map((item, i) => Object.assign({}, item, line3[i])));
+        },[responseData])
 
-      },[responseData.length !== 0])
+      useEffect(() => {
+            if (perdas.length > 1){
+
+                if (perdas[0].data.length > 0){
+            
+                    const line1 = perdas[0].data.map(item => {
+                            return {
+                                name: item.name,
+                                "NºOS de Vazamento p/km de rede": item.valor,
+                            };
+                        });
+                    
+                        const line2 = perdas[1].data.map(item => {
+                            return {
+                                name: item.name,
+                                "NºOS de Vazamento p/ligações": item.valor,
+                            };
+                        });
+                    
+                        const line3 = perdas[2].data.map(item => {
+                            return {
+                                name: item.name,
+                                "Tempo médio correções OS de vazamento": item.valor,
+                            };
+                        });
+                    
+                        setLine((line1.map((item, i) => Object.assign({}, item, line2[i]))).map((item, i) => Object.assign({}, item, line3[i])));
+                } 
+            } 
+
+        },[perdas])
       
     //   console.log(perdas)
 
@@ -248,7 +141,7 @@ export default function Perdas (){
         </div>
         <div className="content-bottom">
             <div className="lc">
-                <LineC dataPerda={perdas}></LineC>
+                <LineC dataPerda={line}></LineC>
                 </div>
             <div className="t">
                 <TableC dataPerda={responseData}></TableC>

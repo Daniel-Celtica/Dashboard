@@ -9,7 +9,8 @@ import { useSelector } from "react-redux";
 
 export default function Perdas (){
     const [perdas, setPerdas] = useState([]);
-    const [line, setLine] = useState([]);
+    const [lineData, setLineData] = useState([]);
+    const [tableData, setTableData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [responseData, setResponseData] = useState([]);
 
@@ -60,7 +61,7 @@ export default function Perdas (){
                 data: (orderByMes.map(({mes,vazamentoLigacoes}) => ({name:mesesSigla[mes-1],valor:vazamentoLigacoes})).reduce((a, c) => {
                     let x = a.find(e => e.name === c.name)
                     if(!x) a.push(Object.assign({},c))
-                    else  x.valor += c.valor
+                    else x.valor += c.valor
                     return a
                 },[]))
             };
@@ -75,7 +76,31 @@ export default function Perdas (){
                 },[])
             };
 
-            setPerdas([dadoGrafico1, dadoGrafico2, dadoGrafico3]);         
+            setPerdas([dadoGrafico1, dadoGrafico2, dadoGrafico3]);       
+            
+            const data1 = {
+                name: "NºOS de Vazamento p/km de rede",
+                valor:  responseData.reduce((acc, d) => acc + d.vazamentosKMRDA, 0 )
+            } 
+            const data2 = {
+                name: "NºOS de Vazamento p/ligações",
+                valor:  responseData.reduce((acc, d) => acc + d.vazamentoLigacoes, 0 )
+            }
+            const data3 = {
+                name: "Tempo médio correções OS de vazamento",
+                valor:  responseData.reduce((acc, d) => acc + d.tempoMedioCorrecao / responseData.length, 0 )
+            }
+            const data4 = {
+                name: "Idade média hidrometros",
+                valor:  responseData.reduce((acc, d) => acc + d.idadeMediaHidrometros / responseData.length, 0 )
+            }
+            const data5 = {
+                name: "Infrações confirmadas",
+                valor:  responseData.reduce((acc, d) => acc + d.infracoesConfirmadas, 0 )
+            }
+
+            setTableData([data1,data2,data3,data4,data5]) 
+        
 
         },[responseData])
 
@@ -105,7 +130,7 @@ export default function Perdas (){
                             };
                         });
                     
-                        setLine((line1.map((item, i) => Object.assign({}, item, line2[i]))).map((item, i) => Object.assign({}, item, line3[i])));
+                        setLineData((line1.map((item, i) => Object.assign({}, item, line2[i]))).map((item, i) => Object.assign({}, item, line3[i])));
                 } 
             } 
 
@@ -133,18 +158,18 @@ export default function Perdas (){
             {perdas.map((perda)=>{
             return(
                 <div key={perda.nome} className="twoinone">
-                    <LabelC dataPerda={perda}></LabelC>
-                    <BarC dataPerda={perda}></BarC>
+                    <LabelC dados={perda}></LabelC>
+                    <BarC dados={perda}></BarC>
                 </div>
             )
             })}
         </div>
         <div className="content-bottom">
             <div className="lc">
-                <LineC dataPerda={line}></LineC>
+                <LineC dados={lineData}></LineC>
                 </div>
             <div className="t">
-                <TableC dataPerda={responseData}></TableC>
+                <TableC dados={tableData}></TableC>
                 </div>
         </div>
         </div>

@@ -20,7 +20,7 @@ function App (){
           <SideMenu onCollapse={(inactive) => { setInactive(inactive) }}/>
           <Drawer/>
           <div className="container">
-            <Filtro onCollapse={(inactiveFilter) => {setInactiveFilter(inactiveFilter) }}/>
+            <Filtro onCollapse={(inactiveFilter) => { setInactiveFilter(inactiveFilter) }}/>
             <Routes/>
           </div>
         </BrowserRouter>

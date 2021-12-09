@@ -28,7 +28,7 @@ export default function LineC(dados) {
         <YAxis yAxisId="left" fontSize="12" />
         <YAxis yAxisId="right" orientation="right" />
         <Tooltip />
-        <Legend wrapperStyle={{ position: "relative" }}/>
+        <Legend />
         {/* utilizar useHistory para saber qual a página, já que o recharts possui essa estrutura de dados */}
         <Line yAxisId="left" type="linear" dataKey="NºOS de Vazamento p/km de rede" stroke="#B14545" activeDot={{stroke: "#B14545" , strokeWidth: 4}} dot={{ fill: "#B14545",  r: 4}} />
         <Line yAxisId="left" type="linear" dataKey="NºOS de Vazamento p/ligações" stroke="#D9AE3F" activeDot={{stroke: "#D9AE3F" , strokeWidth: 4}} dot={{ fill: "#D9AE3F",  r: 4}} />

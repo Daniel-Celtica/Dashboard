@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { BarChart, ResponsiveContainer, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell, ReferenceLine } from "recharts";
+import { BarChart, ResponsiveContainer, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell, ReferenceLine, ReferenceArea} from "recharts";
 
 const barcolors = ["#B14545", "#E9524C", "#F97F3C", "#FFCD48", "#FFF05F", "#B2D645", "#568953", "#337571", "#4661A9", "#5F4878", "#8A4E6E", "#E274B6"]
 
@@ -34,22 +34,18 @@ export default function BarC (dados){
   return (
     <div className="barc">
     <label>{data.name}</label>
-    <ResponsiveContainer height={237.5}>
+    <ResponsiveContainer height={225.5}>
     <BarChart    
       data={data.data}
-      margin={{ top: 30, right: 0, left: -30, bottom: 5 }}
+      margin={{ top: 20, right: 0, left: -30, bottom: 0 }}
       >
       <CartesianGrid  />
       <XAxis dataKey="name" fontSize="12" interval={0}/>
       <YAxis fontSize="10" />
       <Tooltip />
-      <Bar dataKey="valor" fill={cor}>
-         {data.data.map(index => (
-            <Cell key={`cell-${index}`} fill={index.valor >= teste ? ("#629F64") : ("#B14545")}/>
-          ))
-        }      
+      <Bar dataKey="valor" fill="#375E65">  
       </Bar>
-      <ReferenceLine y={teste} stroke="#D9AE3F" strokeWidth="3"  />
+      <ReferenceLine y={teste} label="média" stroke="#B14545" strokeWidth="3" position="right" />
     </BarChart>
     </ResponsiveContainer>
     </div>

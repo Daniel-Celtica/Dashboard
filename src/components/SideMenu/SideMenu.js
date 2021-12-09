@@ -18,10 +18,7 @@ export const menuItems = [
     </svg>
  },
 
-<<<<<<< Updated upstream
  
-=======
->>>>>>> Stashed changes
   { name: "Perdas", exact: true, to: `/perdas`, src: process.env.PUBLIC_URL + 'perdas.svg', src2: process.env.PUBLIC_URL + 'perdas-white.svg', 
     svg: <svg width="30" height="25" viewBox="0 0 30 25" fill="none" xmlns="http://www.w3.org/2000/svg">
     <polygon fill="#375E65" points=" 3,4 9,10.4379 9,25 3,25 3,4"></polygon>

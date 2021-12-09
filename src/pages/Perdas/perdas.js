@@ -48,22 +48,29 @@ export default function Perdas (){
 
             const dadoGrafico1 = {
                 name: "NºOS de Vazamento p/km de rede",
-                data: (orderByMes.map(({mes,vazamentosKMRDA}) => ({name:mesesSigla[mes-1],valor:vazamentosKMRDA}))).reduce((a, c) => {
+                data: ((orderByMes.map(({mes,vazamentosKMRDA}) => ({name:mesesSigla[mes-1],valor:vazamentosKMRDA}))).reduce((a, c) => {
                     let x = a.find(e => e.name === c.name)
                     if(!x) a.push(Object.assign({},c))
-                    else  x.valor += c.valor
+                    else x.valor += c.valor
                     return a
-                },[])
+                },[])).map(index => ({
+                    name: index.name,
+                    valor: parseFloat(index.valor.toFixed(0))
+            }))
             };
+
 
             const dadoGrafico2 = {
                 name: "NºOS de Vazamento p/ligações",
                 data: (orderByMes.map(({mes,vazamentoLigacoes}) => ({name:mesesSigla[mes-1],valor:vazamentoLigacoes})).reduce((a, c) => {
                     let x = a.find(e => e.name === c.name)
                     if(!x) a.push(Object.assign({},c))
-                    else x.valor += c.valor
+                    else  x.valor += c.valor                
                     return a
-                },[]))
+                },[])).map(index => ({
+                    name: index.name,
+                    valor: parseFloat(index.valor.toFixed(2))
+                }))
             };
             
             const dadoGrafico3 = {
@@ -73,34 +80,13 @@ export default function Perdas (){
                     if(!x) a.push(Object.assign({},c))
                     else  x.valor += c.valor / responseData.length
                     return a
-                },[])
+                },[]).map(index => ({
+                    name: index.name,
+                    valor: parseFloat(index.valor.toFixed(2))
+                }))
             };
 
-            setPerdas([dadoGrafico1, dadoGrafico2, dadoGrafico3]);       
-            
-            const data1 = {
-                name: "NºOS de Vazamento p/km de rede",
-                valor:  responseData.reduce((acc, d) => acc + d.vazamentosKMRDA, 0 )
-            } 
-            const data2 = {
-                name: "NºOS de Vazamento p/ligações",
-                valor:  responseData.reduce((acc, d) => acc + d.vazamentoLigacoes, 0 )
-            }
-            const data3 = {
-                name: "Tempo médio correções OS de vazamento",
-                valor:  responseData.reduce((acc, d) => acc + d.tempoMedioCorrecao / responseData.length, 0 )
-            }
-            const data4 = {
-                name: "Idade média hidrometros",
-                valor:  responseData.reduce((acc, d) => acc + d.idadeMediaHidrometros / responseData.length, 0 )
-            }
-            const data5 = {
-                name: "Infrações confirmadas",
-                valor:  responseData.reduce((acc, d) => acc + d.infracoesConfirmadas, 0 )
-            }
-
-            setTableData([data1,data2,data3,data4,data5]) 
-        
+            setPerdas([dadoGrafico1, dadoGrafico2, dadoGrafico3]);               
 
         },[responseData])
 
@@ -116,21 +102,44 @@ export default function Perdas (){
                             };
                         });
                     
-                        const line2 = perdas[1].data.map(item => {
-                            return {
-                                name: item.name,
-                                "NºOS de Vazamento p/ligações": item.valor,
-                            };
-                        });
-                    
-                        const line3 = perdas[2].data.map(item => {
-                            return {
-                                name: item.name,
-                                "Tempo médio correções OS de vazamento": item.valor,
-                            };
-                        });
-                    
-                        setLineData((line1.map((item, i) => Object.assign({}, item, line2[i]))).map((item, i) => Object.assign({}, item, line3[i])));
+                    const line2 = perdas[1].data.map(item => {
+                        return {
+                            name: item.name,
+                            "NºOS de Vazamento p/ligações": item.valor,
+                        };
+                    });
+                
+                    const line3 = perdas[2].data.map(item => {
+                        return {
+                            name: item.name,
+                            "Tempo médio correções OS de vazamento": item.valor,
+                        };
+                    });
+                
+                    setLineData((line1.map((item, i) => Object.assign({}, item, line2[i]))).map((item, i) => Object.assign({}, item, line3[i])));
+
+                    const data1 = {
+                        name: "NºOS de Vazamento p/km de rede",
+                        valor: perdas[0].data.reduce((acc, d) => acc + d.valor,0)
+                    } 
+                    const data2 = {
+                        name: "NºOS de Vazamento p/ligações",
+                        valor:  perdas[1].data.reduce((acc, d) => acc + d.valor, 0 )
+                    }
+                    const data3 = {
+                        name: "Tempo médio correções OS de vazamento",
+                        valor:  perdas[2].data.reduce((acc, d) => acc + d.valor, 0 )
+                    }
+                    const data4 = {
+                        name: "Idade média hidrometros",
+                        valor:  responseData.reduce((acc, d) => acc + d.idadeMediaHidrometros / responseData.length, 0 )
+                    }
+                    const data5 = {
+                        name: "Infrações confirmadas",
+                        valor:  responseData.reduce((acc, d) => acc + d.infracoesConfirmadas, 0 )
+                    }
+        
+                    setTableData([data1,data2,data3,data4,data5])     
                 } 
             } 
 

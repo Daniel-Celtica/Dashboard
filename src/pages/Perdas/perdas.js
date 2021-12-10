@@ -28,7 +28,7 @@ export default function Perdas (){
                 CidadeId: 5,
                 Mes: parseInt(filtro.mes),
                 Ano: parseInt(filtro.ano),
-                Regiao: filtro.bairro
+                Regiao: filtro.regiao
             })
 
             setResponseData(response.data);

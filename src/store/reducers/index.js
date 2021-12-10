@@ -4,7 +4,7 @@ const INITIAL_STATE = {
     data: 
     {
         ano: '',
-        bairro: '',
+        regiao: '',
         mes: '0'
     }
 };

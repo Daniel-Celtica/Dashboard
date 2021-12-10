@@ -508,6 +508,41 @@ body{
 }
 
 /**************************************************/
+/*LEGENDA*/
+/**************************************************/
+.legenda{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.legenda div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.legenda div.active{
+    opacity: 0.3;
+}
+
+.legenda div div{
+    width: 20px;
+    height: 20px;
+    margin: 0px 10px;
+}
+
+.legenda div .media{
+    width: 20px;
+    height: 4px;
+    margin: 0px 10px;
+}
+
+
+
+/**************************************************/
 /*DIV DE BAIXO*/
 /**************************************************/
 

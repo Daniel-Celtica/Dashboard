@@ -4,6 +4,7 @@ import LabelC from "../../components/LabelC/labelc";
 import LineC from "../../components/LineC/linec";
 import TableC from "../../components/TableC/tablec";
 import api from "../../services/api";
+import Loading from "../../components/Loading/loading"
 import { useSelector } from "react-redux";
 
 
@@ -17,7 +18,7 @@ export default function Perdas (){
     const filtro = useSelector(state => state.data);
 
     useEffect(() => {
-        console.log(filtro);
+        // console.log(filtro);
         setLoading(true)
     }, [filtro])
 
@@ -32,7 +33,7 @@ export default function Perdas (){
             })
 
             setResponseData(response.data);
-
+            // console.log(responseData)
             setLoading(false);
         }
         getDadosFiltro()
@@ -56,7 +57,7 @@ export default function Perdas (){
                 },[])).map(index => ({
                     name: index.name,
                     valor: parseFloat(index.valor.toFixed(0))
-            }))
+            })),
             };
 
 
@@ -149,17 +150,18 @@ export default function Perdas (){
 
     if(loading === true){
         return(
+            <Loading/>
+        )   
+    }
+
+    if (responseData.length === 0){
+        return(
             <div className="content">
                 <h1>
-                    <div className="animatedLoading">
-                        <div className="obj1"></div>
-                        <div className="obj2"></div>
-                        <div className="obj3"></div>
-                    </div>
-                    <label>Carregando dados</label>
+                    <label>Sem dados</label>
                 </h1>
             </div>
-        )   
+        )
     }
     return(
         <div className="content">

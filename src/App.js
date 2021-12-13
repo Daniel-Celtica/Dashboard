@@ -1,8 +1,8 @@
-import { BrowserRouter, useLocation } from "react-router-dom";
+import { BrowserRouter} from "react-router-dom";
 import Routes from "./routes";
 import "./App.css";
 import SideMenu from "./components/SideMenu/SideMenu";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import Filtro from "./components/Filtro/Filtro";
 import Drawer from "./components/Drawer/Drawer";
 import { Provider } from "react-redux";

@@ -23,12 +23,13 @@ export default function Filtro (props, start){
 
     const [filtro, setFiltro] = useState([]);
 
-    const filtroteste = useSelector(state => state.data);
+    // const filtroteste = useSelector(state => state.data);
     const dispatch = useDispatch();
 
     const mesesSigla = ["JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"];
+
     
-    //set o valor inicial de ano para o ano atual
+    //seta o valor inicial de ano para o ano atual
     useEffect(() => {
         setSelectedAno(new Date().getFullYear().toString())
         dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, regiao: selectedRegiao, mes: selectedMes }})
@@ -99,8 +100,6 @@ export default function Filtro (props, start){
     useEffect(() => {
         props.onCollapse(inactiveFilter);
     }, [inactiveFilter]);    
-
-    
 
     return(
         //se a página for home ou configurações não exibe filtro

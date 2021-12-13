@@ -158,7 +158,7 @@ export default function Perdas (){
         return(
             <div className="content">
                 <h1>
-                    <label>Sem dados</label>
+                    <label>Dados Indisponíveis</label>
                 </h1>
             </div>
         )

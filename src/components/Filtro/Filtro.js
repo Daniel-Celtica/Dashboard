@@ -83,7 +83,8 @@ export default function Filtro (props, start){
                     ...acc,
                         [mes]: ++acc[mes] || 1
                 }), {})).map(([k, v]) => ({
-                    label: k,
+                    label: mesesSigla[k-1],
+                    valor: k,
                     value: v
                 })) 
             )
@@ -92,8 +93,11 @@ export default function Filtro (props, start){
 
         }
         getDadosFiltro()
+        console.log(mes)
         
     },[])  
+
+
 
     useOnClickOutside(ref, () => setInactiveFilter(!false))
 
@@ -152,7 +156,7 @@ export default function Filtro (props, start){
                         {/*faz um map no array de mes e cria uma option */}
                         {mes.map(index => {
                         return(
-                            <option key={index.label} value={index.label}>{index.label}</option>
+                            <option key={index.label} value={index.valor}>{index.label}</option>
                         )
                         })}
                     </select>

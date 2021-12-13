@@ -7,16 +7,9 @@ export default function LabelC (dados){
            
             <label>{data.name}</label>
             <div>
-                {data.name === "Tempo médio correções OS de vazamento" ? (
                 <span className="valor">
-                    {(data.data.reduce((acc, d) => acc + d.valor, 0 ))}
+                {(data.data.reduce((acc, d) => acc + d.valor, 0 ))}
                 </span>
-                ) : (
-                    <span className="valor">
-                    {(data.data.reduce((acc, d) => acc + d.valor, 0 ))}
-                </span>
-                )}
-                
                 {data.name === "Tempo médio correções OS de vazamento" ? (
                     <span className="medida">min</span>
                 ) : (

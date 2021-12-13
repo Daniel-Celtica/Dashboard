@@ -19,23 +19,6 @@ export default function BarC (dados){
   const [activeIndex, setActiveIndex] = useState(0);
   const activeItem = [data.data[activeIndex]];
 
-
-  function setBarColor() {
-    if (data.name === "NºOS de Vazamento p/km de rede"){
-     setCor("#B14545")
-    }
-    if (data.name === "NºOS de Vazamento p/ligações"){
-      setCor("#D9AE3F")
-    }
-    if (data.name === "Tempo médio correções OS de vazamento"){
-      setCor("#629F64")
-    }
-  }
-
-  useEffect(()=>{
-    setBarColor()
-  },[dados])
-
   const handleClick = useCallback(
     (entry: any, index: number) => {
       setActiveIndex(index);

@@ -117,8 +117,9 @@ export default function Filtro (props, start){
         ) : (
             <img src={filter} />
         )} 
+        {/* <img className="fechar" src={close} onClick={() => setInactiveFilter(!inactiveFilter)} /> */}
 
-        <img className="close" src={close} onClick={() => setInactiveFilter(!inactiveFilter)} />
+        <img className="fechar" src={close} onClick={() => setInactiveFilter(!inactiveFilter)} />
         <label>Filtros</label>
         <br/>
 

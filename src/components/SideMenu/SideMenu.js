@@ -170,6 +170,7 @@ const SideMenu = (props) => {
               )}
           </div>
         </div>
+
     </div>
   );
 };

@@ -52,6 +52,180 @@ body{
 }
 
 /**************************************************/
+/*LOGIN*/
+/**************************************************/
+
+.containerLogin{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.contentLogin{
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    height: 80vh;
+}
+
+.headerLogin{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 53%;
+    height: 100%;
+    background-image: url(../src/assets/bg.svg);
+    background-color: #375E65;
+    border-radius: 0px 25px 25px 0px;
+}
+
+.headerLogin .loginMsg{
+    width: 90%;
+    height: 90%;
+}
+
+.formLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 47%;
+    height: 100%;
+    background-color: #FFF;
+    border-radius: 25px 0px 0px 25px;
+}
+
+.formLogin label{
+    font-size: 18px;
+    color: #375E65;
+}
+
+.formLogin .wellcome{
+    margin: 100px;
+    font-size: 36px;
+}
+
+.formLogin .txtUser{
+    width: 440px;
+    height: 30px;
+    font-size: 18px;
+    border: solid 0px #FFF ;
+    border-bottom: solid 3px #375E65;
+    margin-top: 70px;
+    margin-bottom: 60px;
+    background: url(../src/assets/user.svg) no-repeat right;
+    background-size: 21px;
+    color: #375E65;
+}
+
+.formLogin .txtPass{
+    width: 440px;
+    height: 30px;
+    font-size: 18px;
+    border: solid 0px #FFF ;
+    border-bottom: solid 3px #375E65;
+    margin-bottom: 40px;
+    background: url(../src/assets/pass.svg) no-repeat right;
+    background-size: 21px;
+    color: #375E65;
+}
+
+.formLogin input::placeholder{
+    color: #375E65;
+    opacity: 1;
+}
+
+.formLogin input:focus-visible{
+    outline: 0px;
+    border-bottom: solid 3px  #24393c;
+}
+
+.formLogin .btnEntrar{
+    font-size: 24px;
+    height: 50px;
+    width: 320px;
+    border: none;
+    border-radius: 60px;
+    background-color: #375E65;
+    color: #FFF;
+}
+
+.formLogin .btnEntrar:hover{
+    background-color: #24393c;
+    transition: ease-in-out 0.1s;
+}
+
+.teste{
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+}
+
+.teste input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 10px;
+    width: 10px;
+    border: solid 2px #375E65 ;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .teste:hover input ~ .checkmark {
+    background-color: #C7D2D4;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .teste input:checked ~ .checkmark {
+    background-color: #375E65;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .teste input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .teste .checkmark:after {
+    left: 2px;
+    top: -1px;
+    width: 3px;
+    height: 7px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+/**************************************************/
 /*SIDE MENU*/
 /**************************************************/
 
@@ -320,6 +494,39 @@ body{
 }
 
 /**************************************************/
+/*NO DATA*/
+/**************************************************/
+
+.content .nodata{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content .nodata div{
+    margin-left: -5vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.content .nodata label{
+    font-size: 36px;
+    font-weight: bold;
+    color: #375E65;
+}
+
+.content .nodata img {
+    width: 50%;
+}
+
+@media screen and (max-width: 600px) {
+    .content .nodata img {
+        width: 90%;
+    }
+}
+
+
+/**************************************************/
 /*LOADING ANIMATION*/
 /**************************************************/
 
@@ -327,7 +534,7 @@ body{
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3)
 }
 
-.content h1 label{
+.content h1 .animatedText{
     color: #375E65;
     animation: loading 2s linear infinite ;
 }

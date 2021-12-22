@@ -6,6 +6,7 @@ import TableC from "../../components/TableC/tablec";
 import api from "../../services/api";
 import Loading from "../../components/Loading/loading"
 import { useSelector } from "react-redux";
+import noData from "../../assets/nodatamsg.svg";
 
 
 export default function Perdas (){
@@ -157,8 +158,12 @@ export default function Perdas (){
     if (responseData.length === 0){
         return(
             <div className="content">
-                <h1>
+                <h1 className="nodata">
+                    <div  >
+                    <label>Oops!</label>
                     <label>Dados Indisponíveis</label>
+                    </div>
+                    <img  src={noData} alt="No data"/>
                 </h1>
             </div>
         )

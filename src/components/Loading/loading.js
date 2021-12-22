@@ -7,7 +7,7 @@ export default function Loading (){
                         <div className="obj2"></div>
                         <div className="obj3"></div>
                     </div>
-                    <label>Carregando dados</label>
+                    <label className="animatedText">Carregando dados</label>
                 </h1>
             </div>
     )

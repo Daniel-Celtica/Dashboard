@@ -22,22 +22,22 @@ body{
 
 ::-webkit-scrollbar {
     width: 10px;
-  }
+}
   
   /* Track */
-  ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: #f1f1f1; 
-  }
+}
    
   /* Handle */
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: #375E65; 
-  }
+}
   
   /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: #2a464b; 
-  }
+}
 
 .app{
     
@@ -95,6 +95,7 @@ body{
     width: 47%;
     height: 100%;
     background-color: #FFF;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
     border-radius: 25px 0px 0px 25px;
 }
 
@@ -140,7 +141,7 @@ body{
 
 .formLogin input:focus-visible{
     outline: 0px;
-    border-bottom: solid 3px  #24393c;
+    filter: brightness(60%)
 }
 
 .formLogin .btnEntrar{
@@ -150,32 +151,27 @@ body{
     border: none;
     border-radius: 60px;
     background-color: #375E65;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
     color: #FFF;
 }
 
 .formLogin .btnEntrar:hover{
-    background-color: #24393c;
+    background-color: #21383D;
     transition: ease-in-out 0.1s;
 }
 
-.teste{
+.styled-chkbox{
     display: block;
     position: relative;
     padding-left: 20px;
     margin-bottom: 50px;
     cursor: pointer;
-    font-size: 18px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    
+    font-size: 18px;    
 }
 
-.teste input {
+.styled-chkbox input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
     height: 0;
     width: 0;
 }
@@ -188,32 +184,32 @@ body{
     width: 10px;
     border: solid 2px #375E65 ;
     background-color: #eee;
-  }
+}
   
   /* On mouse-over, add a grey background color */
-  .teste:hover input ~ .checkmark {
+.styled-chkbox:hover input ~ .checkmark {
     background-color: #C7D2D4;
-  }
+}
   
   /* When the checkbox is checked, add a blue background */
-  .teste input:checked ~ .checkmark {
+.styled-chkbox input:checked ~ .checkmark {
     background-color: #375E65;
-  }
+}
   
   /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
+.checkmark:after {
     content: "";
     position: absolute;
     display: none;
-  }
+}
   
   /* Show the checkmark when checked */
-  .teste input:checked ~ .checkmark:after {
+.styled-chkbox input:checked ~ .checkmark:after {
     display: block;
-  }
+}
   
   /* Style the checkmark/indicator */
-  .teste .checkmark:after {
+.styled-chkbox .checkmark:after {
     left: 2px;
     top: -1px;
     width: 3px;

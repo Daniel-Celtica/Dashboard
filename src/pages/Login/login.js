@@ -8,7 +8,7 @@ export default function Login(){
                     <label className="wellcome">Bem-vindo de volta!</label>
                     <input type="text" placeholder="Usuário:" className="txtUser"></input>
                     <input type="password" placeholder="Senha:" className="txtPass"></input>
-                    <label class="teste">Continuar conectado
+                    <label class="styled-chkbox">Continuar conectado
                         <input type="checkbox"/>
                         <span class="checkmark"></span>
                     </label>

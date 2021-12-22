@@ -1,4 +1,5 @@
 import wellcome from "../../assets/wellcomemsg.svg";
+import logo from "../../assets/logo.svg";
 
 export default function Login(){
     return(
@@ -14,6 +15,10 @@ export default function Login(){
                     </label>
                     {/* <label><input type="checkbox" id="chkbox" name="chkbox"></input>Continuar conectado</label> */}
                     <input type="submit" value="Entrar" className="btnEntrar"></input>
+                    <div className="footer">
+                        <label>powered by:</label>
+                        <img src={logo}/>
+                    </div>
                 </form >
                 <div className="headerLogin">
                     <img className="loginMsg" src={wellcome} alt="Bem-vindo"/>

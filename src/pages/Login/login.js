@@ -1,7 +1,11 @@
 import wellcome from "../../assets/wellcomemsg.svg";
 import logo from "../../assets/logo.svg";
+import { NavLink } from "react-router-dom";
 
 export default function Login(){
+
+    
+    
     return(
         <div className="containerLogin">
             <div className="contentLogin">
@@ -14,7 +18,10 @@ export default function Login(){
                         <span class="checkmark"></span>
                     </label>
                     {/* <label><input type="checkbox" id="chkbox" name="chkbox"></input>Continuar conectado</label> */}
+                    <NavLink to="/">
                     <input type="submit" value="Entrar" className="btnEntrar"></input>
+                    </NavLink>
+                    
                     <div className="footer">
                         <label>powered by:</label>
                         <img src={logo}/>

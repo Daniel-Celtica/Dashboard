@@ -13,9 +13,10 @@ function App (){
   const ref = useRef();
   const [inactive, setInactive] = useState(false);
   const [inactiveFilter, setInactiveFilter] = useState(false);
-  const [logged, setlogged] = useState(false);
+  const [logged, setlogged] = useState(true);
 
 
+  console.log(logged)
   return (
     <div className="app">
       <Provider store={store}>

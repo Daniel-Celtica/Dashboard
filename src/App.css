@@ -105,7 +105,7 @@ body{
 }
 
 .formLogin .wellcome{
-    margin: 100px;
+    margin: 100px 0px;
     font-size: 36px;
 }
 
@@ -516,13 +516,13 @@ body{
 }
 
 .content .nodata label{
-    font-size: 36px;
+    font-size: 24px;
     font-weight: bold;
     color: #375E65;
 }
 
 .content .nodata img {
-    width: 50%;
+    height: 20%;
 }
 
 @media screen and (max-width: 600px) {
@@ -1057,3 +1057,34 @@ table {
     
 } 
 
+@media screen and (max-width: 1400px) {
+    .contentLogin{
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .formLogin{
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+    }
+
+    .headerLogin{
+        display: none;
+    }
+
+    .formLogin .txtUser{
+        margin-top: 150px;
+        width: 400px;
+    }
+
+    .formLogin .txtPass{
+        width: 400px;
+    }
+
+    .footer{
+        bottom: 0;
+        position: absolute;
+        margin-bottom: 40px;
+    }
+}

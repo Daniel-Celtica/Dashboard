@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 import useOnClickOutside from "../UseOnClickOutside";
 
 export const menuItems = [
-  { name: "Home", exact: true, to: "/", src: process.env.PUBLIC_URL + 'home.svg', src2: process.env.PUBLIC_URL + 'home-white.svg',
+  { name: "Home", exact: true, to: "/",
     svg: <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
     <polygon fill="#375E65" points=" 2.94337,15.7866 26.6931,15.7866 26.6931,27.6155 24.2412,30 18.472,30 18.472,22.005 11.1644,22.005 11.1644,30 5.39526,30 2.94337,27.6155 2.94337,15.7866"></polygon>
     <polygon fill="#375E65" points=" 13.7193,3.41982 15.9169,3.41982 27.4762,14.8787 26.3774,17.2827 3.25886,17.2827 2.16004,14.8787 13.7193,3.41982"></polygon>
@@ -19,7 +19,7 @@ export const menuItems = [
  },
 
  
-  { name: "Perdas", exact: true, to: `/perdas`, src: process.env.PUBLIC_URL + 'perdas.svg', src2: process.env.PUBLIC_URL + 'perdas-white.svg', 
+  { name: "Perdas", exact: true, to: `/perdas`,
     svg: <svg width="30" height="25" viewBox="0 0 30 25" fill="none" xmlns="http://www.w3.org/2000/svg">
     <polygon fill="#375E65" points=" 3,4 9,10.4379 9,25 3,25 3,4"></polygon>
     <polygon fill="#375E65" points=" 13,9.29783 16,7 19,10.0639 19,25 13,25 13,9.29783"></polygon>
@@ -27,7 +27,7 @@ export const menuItems = [
     <path d="M9.29577 13.283L0 0L9.29577 8.30189L13.5211 4.15094L25.3521 15.3585L27.8873 12.8679L30 22L21.1268 19.9245L23.2394 17.8491L13.9437 9.13208L9.29577 13.283Z" fill="#B14545"/>
     </svg>
 },
-  { name: "Dados Técnicos", to: `/dadostecnicos`, src: process.env.PUBLIC_URL + 'dt.svg', src2: process.env.PUBLIC_URL + 'dt-white.svg',
+  { name: "Dados Técnicos", to: `/dadostecnicos`,
     svg: <svg width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="15" y="0" width="8" height="3" rx="2" stroke="#375E65" strokeWidth="2"></rect>
     <rect x="10" y="2.93555" width="18" height="22.129" rx="2" stroke="#375E65" strokeWidth="4"></rect>
@@ -36,13 +36,13 @@ export const menuItems = [
     </svg>
     
 },
-  { name: "Ordem de Serviço", to: `/os`, src: process.env.PUBLIC_URL + 'os.svg', src2: process.env.PUBLIC_URL + 'os-white.svg',
+  { name: "Ordem de Serviço", to: `/os`,
     svg:<svg width="28" height="30" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="1.5" y="2.06885" width="2" height="25" rx="2.07407" stroke="#375E65" strokeWidth="3"></rect>  
     <path d="M19.9322 3.35286C20.4068 -3.85683 2.0565 2.57493 0 4.0953V24.8276C1.58192 23.169 12.339 15.2274 17.5593 22.013C20.5653 25.9202 22.7797 19.8925 28 23.2853V7.59373C24.2034 4.0953 19.5699 8.8565 19.9322 3.35286Z" fill="#629F64"/>
     </svg>
 },
-  { name: "Configurações", to: `/configuracoes`, src: process.env.PUBLIC_URL + 'config.svg', src2: process.env.PUBLIC_URL + 'config-white.svg',
+  { name: "Configurações", to: `/configuracoes`,
     svg: <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
     <polygon fill="#375E65" points=" 13.125,0 16.875,0 17.9073,4.12926 20.809,5.36385 24.4141,3.2008 27.0657,5.85245 24.8456,9.55267 25.8707,12.0927 30,13.125 30,16.875 25.8707,17.9073 24.673000000000002,20.7475 27.0658,24.7357 24.4142,27.3873 20.3062,24.9225 17.9073,25.8707 16.875,30 13.125,30 12.0927,25.8707 9.55266,24.8456 5.85248,27.0657 3.20083,24.414 5.36379,20.8089 4.12928,17.9073 0,16.875 0,13.125 4.12927,12.0927 5.18985,9.48921 3.20083,6.1742 5.85248,3.52255 9.05767,5.44567 12.0927,4.12931 13.125,0"></polygon>
     <polygon fill="#375E65" points=" 9,9 21,9 21,21 9,21 9,9"></polygon>
@@ -148,8 +148,6 @@ const SideMenu = (props) => {
                 <NavLink
                   key={index}
                   name={menuItem.name}
-                  src={menuItem.src}
-                  src2={menuItem.src}
                   exact
                   to={menuItem.to}
                   className={`menu-item`}>

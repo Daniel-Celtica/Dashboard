@@ -5,16 +5,18 @@ import Perdas from '../pages/Perdas/perdas';
 import DadosTecnicos from '../pages/DadosTecnicos/dadostecnicos';
 import Os from '../pages/OS/os';
 import Configuracoes from '../pages/Configuracoes/configuracoes';
+// import Login from "../pages/Login/login";
 
 export default function Routes(){
 
     return(
         <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/perdas" component={Perdas}/>
-            <Route exact path="/dadostecnicos" component={DadosTecnicos}/>
-            <Route exact path="/os" component={Os}/>
-            <Route exact path="/configuracoes" component={Configuracoes}/>
+            {/* <Route exact path="/login" component={Login}/> */}
+            <Route exact path="/" component={Home} isPrivate/>
+            <Route exact path="/perdas" component={Perdas} isPrivate/>
+            <Route exact path="/dadostecnicos" component={DadosTecnicos} isPrivate/>
+            <Route exact path="/os" component={Os} isPrivate/>
+            <Route exact path="/configuracoes" component={Configuracoes} isPrivate/>
         </Switch>
     )
 }

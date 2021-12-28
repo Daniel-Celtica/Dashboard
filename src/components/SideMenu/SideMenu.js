@@ -56,6 +56,7 @@ const SideMenu = (props) => {
   const [inactiveFilter, setInactiveFilter] = useState(false);
   const [title, setTitle] = useState("Home");
   const ref = useRef();
+  const [teste, setTeste] = useState('');
   
   //#region "Screen size"
   const [screenSize, getDimension] = useState({
@@ -117,6 +118,11 @@ const SideMenu = (props) => {
   useEffect(() => {
     handleTitulo()
   },[local])
+
+  useEffect(() => {
+      setTeste(new Date().getTime().toString());
+      console.log(teste);
+  },[])
 
 
   return (

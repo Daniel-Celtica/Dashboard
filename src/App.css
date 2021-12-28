@@ -1029,6 +1029,10 @@ table {
     /*CONTENT*/
     /**************************************************/
 
+    .soon{
+        height: 820px;
+    }
+
     .content-top {
         flex-direction: column;
     }

@@ -1,15 +1,18 @@
 import wellcome from "../../assets/wellcomemsg.svg";
 import logo from "../../assets/logo.svg";
-import { NavLink } from "react-router-dom";
 
 export default function Login(){
 
+    function handleLogin(e){
+        e.preventDefault()
+        alert('teste')
+    }
     
     
     return(
         <div className="containerLogin">
             <div className="contentLogin">
-                <form className="formLogin">
+                <form className="formLogin" onSubmit={handleLogin}>
                     <label className="wellcome">Bem-vindo de volta!</label>
                     <input type="text" placeholder="Usuário:" className="txtUser"></input>
                     <input type="password" placeholder="Senha:" className="txtPass"></input>
@@ -17,10 +20,8 @@ export default function Login(){
                         <input type="checkbox"/>
                         <span class="checkmark"></span>
                     </label>
-                    {/* <label><input type="checkbox" id="chkbox" name="chkbox"></input>Continuar conectado</label> */}
-                    <NavLink to="/">
+                    
                     <input type="submit" value="Entrar" className="btnEntrar"></input>
-                    </NavLink>
                     
                     <div className="footer">
                         <label>powered by:</label>

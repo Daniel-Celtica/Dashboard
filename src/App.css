@@ -855,6 +855,98 @@ table {
     padding: 10px;
   }
 
+/**************************************************/
+/*CONFIGURAÇÕES*/
+/**************************************************/
+
+.config {
+    
+    padding: 20px;
+    background-color: #375E65;
+    background-image: url(../src/assets/bg.svg);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    color: #FFF;
+}
+
+.config label {
+    font-size: 24px;
+}
+
+.tema{
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+    border-bottom: solid 1px #C7D2D4;   
+}
+
+.tema-options{
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.tema-options label{
+    font-size: 18px  !important;
+    margin-right: 10px;
+}
+
+.atualizar-dados{
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+    align-items: flex-start;
+    border-bottom: solid 1px #C7D2D4;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.formulario label{
+    font-size: 18px;
+}
+
+.formulario .erro{
+    font-size: 14px;
+    color: red;
+    opacity: 100;
+}
+
+.formulario .campos{
+    appearance: none;
+    border-radius: 20px;
+    border-style: none;
+    border-color: #FFF;
+    background-color: #FFF;
+    padding-left: 10px;
+    margin-top: 2px;
+    margin-bottom: 20px;
+    height: 30px;
+    width: 50vw;
+    border-radius: 60px;
+}
+
+.formulario .btnalterar{
+    appearance: none;
+    border-radius: 20px;
+    border-style: none;
+    border-color: #FFF;
+    background-color: #FFF;
+    margin-bottom: 20px;
+    align-self: center;
+    height: 40px;
+    width: 150px;
+    border-radius: 20px; 
+}
+
+.formulario .btnalterar:hover{
+    background-color: #C7D2D4;
+}
+
+
   
   /**************************************************/
   /**************************************************/

@@ -28,30 +28,6 @@ export default function Filtro (props, start){
 
     const mesesSigla = ["JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"];
 
-    
-    //seta o valor inicial de ano para o ano atual
-    useEffect(() => {
-        setSelectedAno(new Date().getFullYear().toString())
-        dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, regiao: selectedRegiao, mes: selectedMes }})
-    }, [loading])
-    
-    function HandleFilter(e) {
-        e.preventDefault();
-        dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, regiao: selectedRegiao, mes: selectedMes }})
-    }
-
-    function changeAno(e) {
-        setSelectedAno(e.target.value);
-    }
-
-    function changeRegiao(e) {
-        setSelectedRegiao(e.target.value);
-    }
-
-    function changeMes(e) {
-        setSelectedMes(e.target.value);
-    }
-
     useEffect(() => {        
         async function getDadosFiltro() {
             const response = await api.get('dashboard/indicadores');
@@ -89,21 +65,47 @@ export default function Filtro (props, start){
                 })) 
             )
             setLoading(false)
-            
 
         }
         getDadosFiltro()
-        console.log(mes)
         
-    },[])  
+    },[])
+
+    function HandleFilter(e) {
+        e.preventDefault();
+        dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, regiao: selectedRegiao, mes: selectedMes }})
+    }
+
+    function changeAno(e) {
+        setSelectedAno(e.target.value);
+    }
+
+    function changeRegiao(e) {
+        setSelectedRegiao(e.target.value);
+    }
+
+    function changeMes(e) {
+        setSelectedMes(e.target.value);
+    }
+    
+    useEffect(()=>{
+        if(ano.length > 0){
+            const firstyear = ano.length - 1;
+            setSelectedAno(ano[firstyear].label)
+        }
+    },[loading === false])
 
 
-
+    useEffect(()=>{
+        dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, regiao: selectedRegiao, mes: selectedMes }})
+    },[selectedAno !== ''])
+    
     useOnClickOutside(ref, () => setInactiveFilter(!false))
 
     useEffect(() => {
         props.onCollapse(inactiveFilter);
-    }, [inactiveFilter]);    
+    }, [inactiveFilter]);
+    
 
     return(
         //se a página for home ou configurações não exibe filtro
@@ -117,7 +119,6 @@ export default function Filtro (props, start){
         ) : (
             <img src={filter} />
         )} 
-        {/* <img className="fechar" src={close} onClick={() => setInactiveFilter(!inactiveFilter)} /> */}
 
         <img className="fechar" src={close} onClick={() => setInactiveFilter(!inactiveFilter)} />
         <label>Filtros</label>
@@ -129,7 +130,9 @@ export default function Filtro (props, start){
             <div className="campos">
                 <div>
                     <label className="title">Ano:</label>
-                    <select name="ano" id="ano" onLoad={changeAno} onChange={changeAno} value={selectedAno} select={filtro.ano}> 
+                    <select name="ano" id="ano" 
+                    onLoad={changeAno} onChange={changeAno} value={selectedAno} select={filtro.ano}
+                    > 
                     {/*faz um map no array de ano e cria uma option */}
                     {ano.map(index => {
                         return(
@@ -140,7 +143,9 @@ export default function Filtro (props, start){
                 </div>
                 <div>
                     <label className="title">Região:</label>
-                    <select name="regiao" id="regiao" onLoad={changeRegiao} onChange={changeRegiao} value={selectedRegiao} select={filtro.regiao}> 
+                    <select name="regiao" id="regiao" 
+                    onLoad={changeRegiao} onChange={changeRegiao} value={selectedRegiao} select={filtro.regiao}
+                    > 
                         <option value="">TODOS</option>
                         {/*faz um map no array de Regiao e cria uma option */}
                         {regiao.map(index => {
@@ -152,7 +157,9 @@ export default function Filtro (props, start){
                 </div>
                 <div>
                     <label className="title">Mês:</label>
-                    <select name="mes" id="mes" onLoad={changeMes} onChange={changeMes} value={selectedMes} select={filtro.mes}>
+                    <select name="mes" id="mes" 
+                    onLoad={changeMes} onChange={changeMes} value={selectedMes} select={filtro.mes}
+                    >
                         <option value="0">TODOS</option>
                         {/*faz um map no array de mes e cria uma option */}
                         {mes.map(index => {

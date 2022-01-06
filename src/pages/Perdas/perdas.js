@@ -19,7 +19,7 @@ export default function Perdas (){
     const filtro = useSelector(state => state.data);
 
     useEffect(() => {
-        // console.log(filtro);
+        console.log(filtro);
         setLoading(true)
     }, [filtro])
 

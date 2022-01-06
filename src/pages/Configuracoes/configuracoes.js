@@ -3,8 +3,7 @@ import { useState } from "react"
 
 
 export default function Configuracoes (){
-    // se não houver um novo login / cadastro  de usuarios 
-    // não terá como alterar senha ou informações em configurações
+ 
     const [nome, setNome] = useState('');
     const [senha, setSenha] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
@@ -18,60 +17,81 @@ export default function Configuracoes (){
 
     function handleSalvar(e){
         e.preventDefault()
-
-    }
-
-    function changeNome(e){
-        if(e.target.value.length >= 4 && e.target.value.length  <= 15){
-            setNome(e.target.value)
+        //verificação
+        if(nome !== '' && senha !== '' && confirmarSenha !== ''){
+            //salva os dados
+            //talvez tenha que dar reload no dashboard '-----'
         }else{
-            setNomeError(true);
-            setErrorNome('O nome deve ser maior que 4 e menor que 16 caracteres!');
+            alert("ta lokão tiu?")
         }
-        
+
     }
 
-    function nomeErrOff(){
-        setNomeError(false);
+    function changeNome(e){   
+        setNome(e.target.value)
     }
+
+    useEffect(()=> {
+        if(nome !== ''){
+            if(nome.length >= 4 && nome.length <= 15){
+                setNomeError(false);
+            }else{
+                setNome('');
+                setNomeError(true);
+                if(nome.length <= 15){
+                    setErrorNome('O nome deve ser maior que 4 caracteres!');
+                }
+                if(nome.length >= 4){
+                    setErrorNome('O nome deve ser menor que 16 caracteres!');
+                }
+            }
+        }
+    },[nome])
+
+
+    
 
     function changeSenha(e){
-        //se o erro estiver desativado e o valor for diferente
-        if(confirmarSenhaError === false && e.target.value !== confirmarSenha){
-            setConfirmarSenhaError(true);
-            setErrorConfirmarSenha('As senhas digitadas não coincidem!');
-        }
-        //se o valor for menor que 6
-        if(e.target.value.length >= 6){
-            setSenha(e.target.value);
-            console.log(senha);
-       
-        }        
-        else{
-            setSenhaError(true);
-            setErrorSenha('A senha deve conter mais de 6 caracteres!');
-        }
-        
+        setSenha(e.target.value);        
     }
 
-    function senhaErrOff(){
-        setSenhaError(false);
-        setConfirmarSenhaError(false)
-    }
+    useEffect(()=> {
+        if(senha !== ''){
+            if(senha.length >= 6){
+                setSenhaError(false);
+            }else{
+                setSenhaError(true);
+                setErrorSenha('A senha deve conter pelo menos 6 caracteres!');
+            }
+            if(confirmarSenha === senha || confirmarSenha === ''){
+                setConfirmarSenhaError(false);
+            }else{
+                setConfirmarSenhaError(true);
+                setErrorConfirmarSenha('As senhas digitadas não coincidem!');
+            }
+        }else{
+            setSenhaError(false)
+        }
+    },[senha])
+
+
 
     function changeConfirmarSenha(e){
-        if(e.target.value === senha){
-            setConfirmarSenha(e.target.value)
-            console.log(confirmarSenha);
-        }else{
-            setConfirmarSenhaError(true);
-            setErrorConfirmarSenha('As senhas digitadas não coincidem!');
-        }
+        setConfirmarSenha(e.target.value);
     }
 
-    function confirmarSenhaErrOff(){
-        setConfirmarSenhaError(false);
-    }
+    useEffect(()=> {
+        if(confirmarSenha !== ''){
+            if(confirmarSenha === senha){
+                setConfirmarSenhaError(false);
+            }else{
+                setConfirmarSenhaError(true);
+                setErrorConfirmarSenha('As senhas digitadas não coincidem!');
+            }
+        }else{
+            setConfirmarSenhaError(false)
+        }
+    },[confirmarSenha])
 
     
     return(
@@ -91,12 +111,12 @@ export default function Configuracoes (){
                     <form className="formulario" onSubmit={handleSalvar}>
                         <label for="nome">Nome:</label>
                         {nomeError ? (<label className="erro">{errorNome}</label>) : (<label className="erro" style={{opacity:"0"}}>{errorNome}<br/></label>)}
-                        <input className="campos" onClick={nomeErrOff} onBlur={changeNome} type="text" id="nome" placeholder='Novo nome:'></input>
+                        <input className="campos" onBlur={changeNome} type="text" id="nome" placeholder='Novo nome:'></input>
                         <label for="senha">Senha:</label>
                         {senhaError ? (<label className="erro">{errorSenha}</label>) : (<label className="erro" style={{opacity:"0"}}>{errorSenha}<br/></label>)}
-                        <input className="campos" onClick={senhaErrOff} onBlur={changeSenha} type="password" id="senha" placeholder="Nova senha:" ></input>
+                        <input className="campos" onBlur={changeSenha} type="password" id="senha" placeholder="Nova senha:" ></input>
                         {confirmarSenhaError ? (<label className="erro">{errorConfirmarSenha}</label>) : (<label className="erro" style={{opacity:"0"}}>{errorConfirmarSenha}<br/></label>)}
-                        <input className="campos" onClick={confirmarSenhaErrOff} onBlur={changeConfirmarSenha} type="password" id="confirmarSenha" placeholder="Confirme a senha:" ></input>
+                        <input className="campos" onBlur={changeConfirmarSenha} type="password" id="confirmarSenha" placeholder="Confirme a senha:" ></input>
                         <input className="btnalterar" type="submit" value="Alterar"></input>
                     </form>
                 </div>

@@ -864,6 +864,7 @@ table {
     padding: 20px;
     background-color: #375E65;
     background-image: url(../src/assets/bg.svg);
+    background-position: right ;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     color: #FFF;

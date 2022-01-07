@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react"
+import { useEffect, useState } from "react";
 
 
 export default function Configuracoes (){
@@ -13,22 +12,26 @@ export default function Configuracoes (){
     const [errorNome, setErrorNome] = useState('');
     const [errorSenha, setErrorSenha] = useState('');
     const [errorConfirmarSenha, setErrorConfirmarSenha] = useState('');
-    //melhorar a lógica depois
+    
+    function handleSair(){
+        
+    }
 
     function handleSalvar(e){
         e.preventDefault()
         //verificação
         if(nome !== '' && senha !== '' && confirmarSenha !== ''){
             //salva os dados
-            //talvez tenha que dar reload no dashboard '-----'
+            //talvez tenha que dar reload no dashboard
+            alert("comming soon...");
         }else{
-            alert("ta lokão tiu?")
+            alert("campos incorretos!");
         }
 
     }
 
     function changeNome(e){   
-        setNome(e.target.value)
+        setNome(e.target.value);
     }
 
     useEffect(()=> {
@@ -120,8 +123,8 @@ export default function Configuracoes (){
                         <input className="btnalterar" type="submit" value="Alterar"></input>
                     </form>
                 </div>
-                <div style={{display:'flex', flexDirection: 'column', alignItems: 'flex-end', margin:'40px'}}>
-                    <input style={{height: '40px', width: '100px'}} type="button" value="Sair" ></input>
+                <div className="sair">
+                    <input className="btnsair" type="button" value="Sair" onClick={handleSair} ></input>
                 </div>
                 
             </div>

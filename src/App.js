@@ -13,10 +13,13 @@ function App (){
   const ref = useRef();
   const [inactive, setInactive] = useState(false);
   const [inactiveFilter, setInactiveFilter] = useState(false);
-  const [logged, setlogged] = useState(true);
+  const [logged, setlogged] = useState(false);
+
+  function handleChange(newValue){
+    setlogged(newValue)
+  }
 
 
-  console.log(logged)
   return (
     <div className="app">
       <Provider store={store}>
@@ -27,11 +30,11 @@ function App (){
             <Drawer/>
               <div className="container">
                 <Filtro onCollapse={(inactiveFilter) => { setInactiveFilter(inactiveFilter) }}/>
-                <Routes/>
+                <Routes value={logged} onCollapse={handleChange}/>
               </div>
           </>
           ): (
-            <Login/>
+            <Login value={logged} onSubmit={handleChange}/>
           )}
         </BrowserRouter>
       </Provider>

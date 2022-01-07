@@ -105,7 +105,7 @@ body{
 }
 
 .formLogin .wellcome{
-    margin: 100px 0px;
+    margin: 10vh 0px;
     font-size: 36px;
 }
 
@@ -516,18 +516,22 @@ body{
 }
 
 .content .nodata label{
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
     color: #375E65;
 }
 
 .content .nodata img {
-    height: 20%;
+    width: 47%;
 }
 
 @media screen and (max-width: 600px) {
     .content .nodata img {
         width: 90%;
+    }
+
+    .content .nodata label{
+        font-size: 24px;
     }
 }
 
@@ -877,7 +881,7 @@ table {
 .tema{
     display: flex;
     flex-direction: column;
-    margin: 40px;
+    margin: 20px;
     border-bottom: solid 1px #C7D2D4;   
 }
 
@@ -895,7 +899,7 @@ table {
 .atualizar-dados{
     display: flex;
     flex-direction: column;
-    margin: 40px;
+    margin: 20px;
     align-items: flex-start;
     border-bottom: solid 1px #C7D2D4;
 }
@@ -936,17 +940,38 @@ table {
     border-style: none;
     border-color: #FFF;
     background-color: #FFF;
+    margin-top: 40px;
     margin-bottom: 20px;
-    align-self: center;
-    height: 40px;
+    height: 30px;
     width: 150px;
-    border-radius: 20px; 
 }
 
 .formulario .btnalterar:hover{
     background-color: #C7D2D4;
 }
 
+.sair{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 40px;
+}
+
+.sair .btnsair{
+    width: 100px;
+    height: 30px;
+    appearance: none;
+    border-radius: 20px;
+    border-style: none;
+    border-color: #FFF;
+    background-color: #FFF;
+    /* margin-bottom: 20px; */
+    align-self: center;
+}
+
+.sair .btnsair:hover{
+    background-color: #C7D2D4;
+}
 
   
   /**************************************************/
@@ -1171,12 +1196,12 @@ table {
     }
 
     .formLogin .txtUser{
-        margin-top: 150px;
-        width: 400px;
+        margin-top: 10vh;
+        width: 80vw;
     }
 
     .formLogin .txtPass{
-        width: 400px;
+        width: 80vw;
     }
 
     .footer{

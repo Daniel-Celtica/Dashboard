@@ -7,7 +7,9 @@ import Os from '../pages/OS/os';
 import Configuracoes from '../pages/Configuracoes/configuracoes';
 // import Login from "../pages/Login/login";
 
-export default function Routes(){
+export default function Routes(props){
+
+
 
     return(
         <Switch>

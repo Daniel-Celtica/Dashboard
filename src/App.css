@@ -92,6 +92,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     width: 47%;
     height: 100%;
     background-color: #FFF;
@@ -105,24 +106,29 @@ body{
 }
 
 .formLogin .wellcome{
-    margin: 10vh 0px;
+    /* margin: 10vh 0px; */
     font-size: 36px;
 }
 
-.formLogin .txtUser{
+.formLogin div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formLogin div .txtUser{
     width: 440px;
     height: 30px;
     font-size: 18px;
     border: solid 0px #FFF ;
     border-bottom: solid 3px #375E65;
-    margin-top: 70px;
-    margin-bottom: 60px;
+    margin: 60px 0;
     background: url(../src/assets/user.svg) no-repeat right;
     background-size: 21px;
     color: #375E65;
 }
 
-.formLogin .txtPass{
+.formLogin div .txtPass{
     width: 440px;
     height: 30px;
     font-size: 18px;
@@ -164,7 +170,7 @@ body{
     display: block;
     position: relative;
     padding-left: 20px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
     cursor: pointer;
     font-size: 18px;    
 }
@@ -224,7 +230,7 @@ body{
 .footer {
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    /* margin-top: 100px; */
 }
 
 .footer label{
@@ -1202,11 +1208,5 @@ table {
 
     .formLogin .txtPass{
         width: 80vw;
-    }
-
-    .footer{
-        bottom: 0;
-        position: absolute;
-        margin-bottom: 40px;
     }
 }

@@ -14,7 +14,7 @@ export default function Login(props){
             pass: '1234'
         },
         {
-            user: 'malvadão',
+            user: 'malvadao',
             pass: '1234'
         },
         {
@@ -25,32 +25,15 @@ export default function Login(props){
 
     const [usuario, setUsuario] = useState('');
     const [senha, setSenha] = useState('');
-    const [testeFail, setTesteFail] = useState(false);
-    const [testeSuccess, setTesteSuccess] = useState(false);
 
     function handleLogin(e){
         e.preventDefault()
-        console.log(usuario, senha)
-        if(usuario !== '' && senha !== ''){
-            contas.map(index => {
-                if(index.user === usuario && index.pass === senha){
-                    setTesteSuccess(true);
-                    props.onSubmit(!false);
-                }else{
-                    setTesteFail(true);
-                }
-            })
-           
-            if(testeFail === true && testeSuccess === false){
-                alert("usuario ou senha invalidos!")
-                setTesteSuccess(false);
-                setTesteFail(false);
-                 
-            }
+        var index = contas.findIndex(p => p.user === usuario && p.pass === senha );
+        if(index < 0){
+            alert("usuario ou senha invalidos!")
         }else{
-            alert('preencha os campos para fazer login')
-        }
-        
+            props.onSubmit(!false)
+        }        
     }
 
     function changeUsuario(e){
@@ -67,12 +50,15 @@ export default function Login(props){
             <div className="contentLogin">
                 <form className="formLogin" onSubmit={(e) => handleLogin(e)} value={props.logged} >
                     <label className="wellcome">Bem-vindo de volta!</label>
-                    <input onBlur={changeUsuario} type="text" placeholder="Usuário:" className="txtUser"></input>
-                    <input onBlur={changeSenha} type="password" placeholder="Senha:" className="txtPass"></input>
-                    <label class="styled-chkbox">Continuar conectado
-                        <input type="checkbox"/>
-                        <span class="checkmark"></span>
-                    </label>
+                    <div>
+                        <input onChange={changeUsuario} type="text" placeholder="Usuário:" className="txtUser"></input>
+                        <input onChange={changeSenha} type="password" placeholder="Senha:" className="txtPass"></input>
+                        <label class="styled-chkbox">Continuar conectado
+                            <input type="checkbox"/>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    
                     
                     <input type="submit" value="Entrar" className="btnEntrar"></input>
                     

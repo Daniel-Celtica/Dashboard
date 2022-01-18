@@ -115,12 +115,12 @@ export default function Filtro (props, start){
         <form ref={ref} className={`filtro ${inactiveFilter ? "inactiveFilter" : ""}`} onSubmit={HandleFilter}>
          {/* Retira click do filtro se display width < 1500 */}   
         {inactiveFilter ? (
-            <img src={filter} onClick={() => setInactiveFilter(!inactiveFilter)} />
+            <img src={filter} alt="Filtro" onClick={() => setInactiveFilter(!inactiveFilter)} />
         ) : (
-            <img src={filter} />
+            <img src={filter} alt="Filtro" />
         )} 
 
-        <img className="fechar" src={close} onClick={() => setInactiveFilter(!inactiveFilter)} />
+        <img className="fechar" src={close} alt="Fechar" onClick={() => setInactiveFilter(!inactiveFilter)} />
         <label>Filtros</label>
         <br/>
 

@@ -20,13 +20,41 @@ export default function Configuracoes (){
     function handleSalvar(e){
         e.preventDefault()
         //verificação
-        if(nome !== '' && senha !== '' && confirmarSenha !== ''){
-            //salva os dados
-            //talvez tenha que dar reload no dashboard
-            alert("comming soon...");
-        }else{
-            alert("campos incorretos!");
+        let teste = 3;
+        if(nome !== '' && senha === '' && confirmarSenha === '' && nomeError === false && senhaError === false && confirmarSenhaError === false) {
+            teste = 0 //alterar somente nome
         }
+        if(nome === '' && senha !== '' && confirmarSenha !== '' && nomeError === false && senhaError === false && confirmarSenhaError === false) {
+            teste = 1 //alterar somente senha 
+        }
+        if(nome !== '' && senha !== '' && confirmarSenha !== '' && nomeError === false && senhaError === false && confirmarSenhaError === false ){
+            teste = 2 //alterar os dois
+        }
+        switch (teste) {
+            case 0:
+                alert("comming soon...");
+                break;
+            case 1:
+                alert("comming soon...");
+                break;
+            case 2:
+                alert("comming soon...");
+                break;
+            case 3:
+                alert("campos incorretos!");
+                break;
+
+        }
+        
+
+        //     //salva os dados no banco
+        //     //altera os dados da sessão tambem
+        //     //talvez tenha que dar reload no dashboard
+        //     alert("comming soon...");
+        // }else{
+        //     alert("campos incorretos!");
+        // }
+        
 
     }
 
@@ -39,7 +67,6 @@ export default function Configuracoes (){
             if(nome.length >= 4 && nome.length <= 15){
                 setNomeError(false);
             }else{
-                setNome('');
                 setNomeError(true);
                 if(nome.length <= 15){
                     setErrorNome('O nome deve ser maior que 4 caracteres!');

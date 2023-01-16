@@ -26,11 +26,11 @@ export default function Perdas (){
     useEffect(() => {
         async function getDadosFiltro() {
             
-            const response = await api.post('dashboard/indicadores',{
+            const response = await api.post('indicadores/Parametros',{
                 CidadeId: 5,
                 Mes: parseInt(filtro.mes),
                 Ano: parseInt(filtro.ano),
-                Regiao: filtro.regiao
+                Regiao: filtro.bairro
             })
 
             setResponseData(response.data);

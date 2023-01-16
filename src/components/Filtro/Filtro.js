@@ -14,11 +14,11 @@ export default function Filtro (props, start){
     const [loading, setLoading] = useState(true);
 
     const [ano, setAno] = useState([]); 
-    const [regiao, setRegiao] = useState([]); 
+    const [bairro, setBairro] = useState([]); 
     const [mes, setMes] = useState([]); 
 
     const [selectedAno, setSelectedAno] = useState('');
-    const [selectedRegiao, setSelectedRegiao] = useState('');
+    const [selectedBairro, setSelectedBairro] = useState('');
     const [selectedMes, setSelectedMes] = useState('0');
 
     const [filtro, setFiltro] = useState([]);
@@ -44,7 +44,7 @@ export default function Filtro (props, start){
                 }))).sort((a, b) => (a.label < b.label) ? 1 : -1)              
             )
 
-            setRegiao(
+            setBairro(
                 Object.entries( response.data.reduce((acc, {regiao}) => ({
                     ...acc,
                         [regiao]: ++acc[regiao] || 1
@@ -73,32 +73,32 @@ export default function Filtro (props, start){
 
     function HandleFilter(e) {
         e.preventDefault();
-        dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, regiao: selectedRegiao, mes: selectedMes }})
+        dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, bairro: selectedBairro, mes: selectedMes }})
     }
 
     function changeAno(e) {
         setSelectedAno(e.target.value);
     }
-
-    function changeRegiao(e) {
-        setSelectedRegiao(e.target.value);
+    
+    function changeBairro(e) {
+        setSelectedBairro(e.target.value);
     }
 
     function changeMes(e) {
         setSelectedMes(e.target.value);
     }
     
-    useEffect(()=>{
-        if(ano.length > 0){
-            const firstyear = ano.length - 1;
-            setSelectedAno(ano[firstyear].label)
-        }
-    },[loading === false])
+ 
+     //set o valor inicial de ano para o ano atual
+     useEffect(() => {
+        setSelectedAno(new Date().getFullYear().toString())
+        dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, bairro: selectedBairro, mes: selectedMes }})
+    }, [loading])
 
 
-    useEffect(()=>{
-        dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, regiao: selectedRegiao, mes: selectedMes }})
-    },[selectedAno !== ''])
+    // useEffect(()=>{
+    //     dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, regiao: selectedRegiao, mes: selectedMes }})
+    // },[selectedAno !== ''])
     
     useOnClickOutside(ref, () => setInactiveFilter(!false))
 
@@ -142,13 +142,11 @@ export default function Filtro (props, start){
                     </select>
                 </div>
                 <div>
-                    <label className="title">Região:</label>
-                    <select name="regiao" id="regiao" 
-                    onLoad={changeRegiao} onChange={changeRegiao} value={selectedRegiao} select={filtro.regiao}
-                    > 
+                    <label className="title">Bairro:</label>
+                    <select name="bairro" id="bairro" onLoad={changeBairro} onChange={changeBairro} value={selectedBairro} select={filtro.bairro}> 
                         <option value="">TODOS</option>
-                        {/*faz um map no array de Regiao e cria uma option */}
-                        {regiao.map(index => {
+                        {/*faz um map no array de bairro e cria uma option */}
+                        {bairro.map(index => {
                         return(
                             <option key={index.label} value={index.label}>{index.label}</option>
                         )

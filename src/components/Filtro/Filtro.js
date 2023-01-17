@@ -28,11 +28,36 @@ export default function Filtro (props, start){
 
     const mesesSigla = ["JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"];
 
+
+     //set o valor inicial de ano para o ano atual
+    //  useEffect(() => {
+    //     setSelectedAno(new Date().getFullYear().toString())
+    //     dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, bairro: selectedBairro, mes: selectedMes }})
+    // }, [loading])
+   
+    function HandleFilter(e) {
+        e.preventDefault();
+        dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, bairro: selectedBairro, mes: selectedMes }})    
+    }
+
+    function changeAno(e) {
+        setSelectedAno(e.target.value);
+    }
+    
+    function changeBairro(e) {
+        setSelectedBairro(e.target.value);
+    }
+
+    function changeMes(e) {
+        setSelectedMes(e.target.value);
+    }
+    
+ 
     useEffect(() => {        
         async function getDadosFiltro() {
-            const response = await api.get('dashboard/indicadores');
+            const response = await api.get('dadostecnicos');
 
-            // console.log(response.data)
+            console.log(response.data)
             
             setAno(
                 (Object.entries( response.data.reduce((acc, {ano}) => ({
@@ -71,34 +96,13 @@ export default function Filtro (props, start){
         
     },[])
 
-    function HandleFilter(e) {
-        e.preventDefault();
-        dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, bairro: selectedBairro, mes: selectedMes }})
-    }
 
-    function changeAno(e) {
-        setSelectedAno(e.target.value);
-    }
     
-    function changeBairro(e) {
-        setSelectedBairro(e.target.value);
-    }
-
-    function changeMes(e) {
-        setSelectedMes(e.target.value);
-    }
-    
- 
-     //set o valor inicial de ano para o ano atual
-     useEffect(() => {
-        setSelectedAno(new Date().getFullYear().toString())
-        dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, bairro: selectedBairro, mes: selectedMes }})
-    }, [loading])
 
 
-    // useEffect(()=>{
-    //     dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, regiao: selectedRegiao, mes: selectedMes }})
-    // },[selectedAno !== ''])
+    useEffect(()=>{
+        dispatch({ type: 'CHANGE_FILTRO', data: { ano: selectedAno, regiao: selectedBairro, mes: selectedMes }})
+    },[selectedAno !== ''])
     
     useOnClickOutside(ref, () => setInactiveFilter(!false))
 
@@ -141,7 +145,7 @@ export default function Filtro (props, start){
                     })}
                     </select>
                 </div>
-                <div>
+                {local.pathname === "/dadostecnicos" ? (null) : (<div>
                     <label className="title">Bairro:</label>
                     <select name="bairro" id="bairro" onLoad={changeBairro} onChange={changeBairro} value={selectedBairro} select={filtro.bairro}> 
                         <option value="">TODOS</option>
@@ -152,7 +156,8 @@ export default function Filtro (props, start){
                         )
                     })}
                     </select>
-                </div>
+                </div>)}
+                
                 <div>
                     <label className="title">Mês:</label>
                     <select name="mes" id="mes" 

@@ -24,12 +24,10 @@ export default function DadosTecnicos (){
     useEffect(() => {
         async function getDadosFiltro() {
             //2021 mes 3
-            const response = await api.post('dadostecnicos/parametros',{
+            const response = await api.post('dadostecnicos/Parametros',{
                 CidadeId: 10,
-                //Mes: parseInt(filtro.mes),
-                //Ano: parseInt(filtro.ano),
-                Mes: 0,
-                Ano: 2021,
+                Mes: parseInt(filtro.mes),
+                Ano: parseInt(filtro.ano),
                 Regiao: ''
             })
 
